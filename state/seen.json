@@ -1,11 +1,18 @@
 {
   "initialized_sources": [
+    "cafef-taichinh-nganhang",
+    "cafef-vimo",
+    "chinhphu-chinh-sach-moi",
     "iig-thong-bao",
     "iig-tin-tuc",
     "ptit-daotao",
     "ptit-giaovu",
     "ptit-thong-bao",
-    "ptit-tin-tuc"
+    "ptit-tin-tuc",
+    "techcrunch-ai",
+    "vnexpress-bds-noxh",
+    "vnexpress-congnghe",
+    "vnexpress-phapluat-giaothong"
   ],
   "seen": {
     "https://iigvietnam.com/vi/tin-tuc/thong-bao-lich-nghi-ngay-van-hoa-viet-nam-24-11": {
@@ -427,6 +434,386 @@
       "source_id": "ptit-daotao",
       "title": "Thông báo Lịch trả tài khoản học trực tuyến ED Course 2, Course 3_CLC và Course 3 Plus cho các lớp khóa D24, D25 – đợt 2 của Học kỳ I năm học 2026 – 2027",
       "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://xaydungchinhsach.chinhphu.vn/thong-qua-luat-sua-doi-bo-sung-mot-so-dieu-cua-luat-thue-thu-nhap-doanh-nghiep-luat-thue-su-dung-dat-phi-nong-nghiep-luat-thue-thu-nhap-ca-nhan-119261120172604828.htm": {
+      "source_id": "chinhphu-chinh-sach-moi",
+      "title": "Thông qua Luật sửa đổi, bổ sung một số điều của Luật Thuế thu nhập doanh nghiệp, Luật Thuế sử dụng đất phi nông nghiệp, Luật Thuế thu nhập cá nhân",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://xaydungchinhsach.chinhphu.vn/3-thu-tuc-hanh-chinh-linh-vuc-bhxh-thuc-hien-khong-phu-thuoc-dia-gioi-hanh-chinh-119261117104154326.htm": {
+      "source_id": "chinhphu-chinh-sach-moi",
+      "title": "3 thủ tục hành chính lĩnh vực BHXH thực hiện không phụ thuộc địa giới hành chính",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://xaydungchinhsach.chinhphu.vn/co-che-hoat-dong-quan-ly-tai-chinh-dac-thu-cua-tap-doan-dien-luc-viet-nam-evn-119261113094525682.htm": {
+      "source_id": "chinhphu-chinh-sach-moi",
+      "title": "Cơ chế hoạt động, quản lý tài chính đặc thù của Tập đoàn Điện lực Việt Nam (EVN)",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://xaydungchinhsach.chinhphu.vn/mien-phi-tham-quan-10-di-tich-bao-tang-vuon-quoc-gia-vao-ngay-van-hoa-viet-nam-119261111151604878.htm": {
+      "source_id": "chinhphu-chinh-sach-moi",
+      "title": "Thông tư số 167/2026/TT-BTC quy định miễn phí thăm quan vào Ngày Văn hóa Việt Nam",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://xaydungchinhsach.chinhphu.vn/danh-muc-bi-mat-nha-nuoc-linh-vuc-tai-chinh-119261111161034246.htm": {
+      "source_id": "chinhphu-chinh-sach-moi",
+      "title": "Danh mục bí mật nhà nước lĩnh vực tài chính",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/ha-noi-du-kien-hoan-thanh-20-000-can-nha-xa-hoi-nam-sau-5146489.html": {
+      "source_id": "vnexpress-bds-noxh",
+      "title": "Hà Nội dự kiến hoàn thành 20.000 căn nhà xã hội năm sau",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/vingroup-khoi-cong-du-an-nha-o-xa-hoi-lon-nhat-viet-nam-5146393.html": {
+      "source_id": "vnexpress-bds-noxh",
+      "title": "Vingroup khởi công dự án nhà ở xã hội lớn nhất Việt Nam",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/can-ho-thu-cap-tai-tp-hcm-dua-nhau-giam-gia-5143920.html": {
+      "source_id": "vnexpress-bds-noxh",
+      "title": "Căn hộ thứ cấp tại TP HCM đua nhau giảm giá",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/river-terrace-duoc-chuyen-hon-2-5-ha-dat-nong-nghiep-lam-chung-cu-tai-tp-hcm-5145923.html": {
+      "source_id": "vnexpress-bds-noxh",
+      "title": "River Terrace được chuyển hơn 2,5 ha đất nông nghiệp làm chung cư tại TP HCM",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/tp-hcm-cho-phep-chuyen-gan-192-ha-dat-nong-nghiep-lam-nha-o-xa-hoi-5145379.html": {
+      "source_id": "vnexpress-bds-noxh",
+      "title": "TP HCM cho phép chuyển gần 192 ha đất nông nghiệp làm nhà ở xã hội",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/nha-o-xa-hoi-du-kien-van-duoc-ban-lai-theo-gia-thi-truong-sau-5-nam-5144920.html": {
+      "source_id": "vnexpress-bds-noxh",
+      "title": "Nhà ở xã hội dự kiến vẫn được bán lại theo giá thị trường sau 5 năm",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/bi-hai-phan-doi-quan-diem-hanh-phuc-hai-long-o-chung-cu-khong-so-do-cua-ong-than-5146867.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "Bị hại phản đối quan điểm 'hạnh phúc, hài lòng' ở chung cư không sổ đỏ của ông Thản",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/vks-ly-giai-viec-ong-le-thanh-than-co-12-du-an-sai-pham-song-chi-5-can-bo-bi-xet-xu-5146803.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "VKS lý giải việc ông Lê Thanh Thản có 12 dự án sai phạm song 'chỉ 5 cán bộ' bị xét xử",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/ong-le-thanh-than-noi-loi-sau-cung-tai-toa-trong-ba-giay-5146685.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "Ông Lê Thanh Thản nói lời sau cùng tại tòa trong ba giây",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/gia-dinh-bi-tam-giu-xe-phat-77-trieu-dong-vi-giao-oto-cho-con-chua-co-bang-5146500.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "Gia đình bị tạm giữ xe, phạt 77 triệu đồng vì giao ôtô cho con chưa có bằng",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/ba-nguoi-nuoc-ngoai-bi-phat-19-5-trieu-dong-vi-di-xe-lang-lach-o-hoi-an-5146524.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "Ba người nước ngoài bị phạt 19,5 triệu đồng vì đi xe lạng lách ở Hội An",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/giang-ho-anh-co-quan-8-va-4-nguoi-bi-phat-an-tu-hinh-5146257.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "Giang hồ 'anh Cơ quận 8' và 4 người bị phạt án tử hình",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/vu-nam-sinh-bi-ban-tha-xuong-song-co-dau-hieu-cua-hai-toi-danh-5146265.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "Vụ 'nam sinh bị bạn thả xuống sông' có dấu hiệu của hai tội danh",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/thu-khoa-ke-toan-thue-han-quoc-bi-dieu-tra-vi-gian-lan-dung-ai-khi-thi-5146013.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "Thủ khoa kế toán thuế Hàn Quốc bị điều tra vì gian lận dùng AI khi thi",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/can-bo-thue-tp-hcm-thua-nhan-bao-ke-duong-day-hoa-don-khong-4-180-ty-dong-5145615.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "Cán bộ thuế TP HCM thừa nhận 'bảo kê' đường dây hóa đơn khống 4.180 tỷ đồng",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/50-nguoi-mua-ban-hoa-don-tri-gia-hon-3-700-ty-dong-5145610.html": {
+      "source_id": "vnexpress-phapluat-giaothong",
+      "title": "50 người mua bán hóa đơn trị giá hơn 3.700 tỷ đồng",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/vi-sao-gia-vang-lao-doc-giam-manh-nhat-32-tuan-188261120212416431.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Vì sao giá vàng lao dốc, giảm mạnh nhất 32 tuần?",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/ngan-hang-lon-nhat-viet-nam-co-gan-1-4-tong-du-no-lien-quan-den-bat-dong-san-dua-ra-nhan-dinh-dang-chu-y-ve-trien-vong-thi-truong-188261120112817945.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Ngân hàng lớn nhất Việt Nam có gần 1/4 tổng dư nợ liên quan đến bất động sản, đưa ra nhận định đáng chú ý về triển vọng thị trường",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/bidv-dong-hanh-cung-nen-kinh-te-tiep-suc-nguon-von-huong-toi-tang-truong-hai-con-so-188261120101423981.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "BIDV đồng hành cùng nền kinh tế, tiếp sức nguồn vốn hướng tới tăng trưởng hai con số",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/gia-vang-hom-nay-20-11-vang-mieng-sjc-ban-ra-1362-trieu-dong-luong-vang-the-gioi-giam-sau-188261120072539601.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Giá vàng hôm nay 20/11 tại SJC, Bảo Tín Mạnh Hải, DOJI, PNJ,... lao dốc tới 4 triệu đồng/lượng",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/ngay-20-11-gui-duoi-100-trieu-dong-ky-han-12-thang-tai-mb-vpbank-techcombank-sacombank-shb-hdbank-acb-va-vib-nhan-duoc-bao-nhieu-tien-lai-18826111923160495.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Ngày 20/11, gửi dưới 100 triệu đồng kỳ hạn 12 tháng tại MB, VPBank, Techcombank, Sacombank, SHB, HDBank, ACB và VIB nhận được bao nhiêu tiền lãi?",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/chien-luoc-phong-ve-ty-gia-cho-doanh-nghiep-mua-cuoi-nam-188261119184026758.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Chiến lược phòng vệ tỷ giá cho doanh nghiệp mùa cuối năm",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/tin-dung-den-cong-nhan-thuong-xuyen-bi-doi-no-gay-suc-ep-188261119161622784.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Tín dụng đen: Công nhân thường xuyên bị đòi nợ, gây sức ép",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/gia-vang-sjc-vang-nhan-9999-sang-ngay-19-11-188261119020430468.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Giá vàng SJC, vàng nhẫn 9999 chiều ngày 19/11",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/lai-suat-ngan-hang-trai-phieu-neo-cao-tiet-kiem-ha-nhiet-188261119112330236.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Lãi suất ngân hàng: Trái phiếu neo cao, tiết kiệm hạ nhiệt",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/gia-vang-9999-bao-tin-minh-chau-hom-nay-19-11-2026-bao-nhieu-1-chi-188261119070946776.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Giá vàng 9999 Bảo Tín Minh Châu hôm nay 19/11/2026 bao nhiêu 1 chỉ?",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/mua-khach-quoc-te-cuoi-nam-co-hoi-vang-cho-cac-diem-kinh-doanh-dich-vu-188261119084132455.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Mùa khách quốc tế cuối năm: Cơ hội vàng cho các điểm kinh doanh dịch vụ",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/lai-suat-tiet-kiem-tiep-tuc-xu-huong-giam-188261119075855436.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Lãi suất tiết kiệm tiếp tục xu hướng giảm",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/vietcredit-la-don-vi-dan-dau-ve-xu-huong-su-dung-the-tin-dung-noi-dia-tren-thi-truong-188261118213521464.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "VietCredit là “Đơn vị dẫn đầu về xu hướng sử dụng thẻ tín dụng nội địa trên thị trường”",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/vib-chu-dong-don-co-hoi-toi-uu-thanh-khoan-tu-giai-phap-hoan-doi-ngoai-te-cua-nhnn-188261119065406558.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "VIB chủ động đón cơ hội tối ưu thanh khoản từ giải pháp hoán đổi ngoại tệ của NHNN",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/ngay-19-11-gui-duoi-100-trieu-6-thang-tai-mb-vpbank-techcombank-sacombank-shb-hdbank-va-acb-nhan-duoc-bao-nhieu-tien-lai-188261118232517873.chn": {
+      "source_id": "cafef-taichinh-nganhang",
+      "title": "Ngày 19/11, gửi dưới 100 triệu 6 tháng tại MB, VPBank, Techcombank, Sacombank, SHB, HDBank và ACB nhận được bao nhiêu tiền lãi?",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/tu-1-3-2027-se-khong-to-chuc-co-quan-dieu-tra-cua-vien-kiem-sat-nhan-dan-toi-cao-188261120222919881.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Từ 1/3/2027 sẽ không tổ chức cơ quan điều tra của Viện kiểm sát nhân dân tối cao",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/quoc-hoi-chot-truong-hop-bi-phat-hanh-chinh-toi-da-3-ty-dong-quy-dinh-ve-cat-dien-nuoc-internet-co-thay-doi-quan-trong-188261120212000578.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Quốc hội ‘chốt’ trường hợp bị phạt hành chính tối đa 3 tỷ đồng",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/bo-truong-tai-chinh-nop-du-thue-se-duoc-go-hoan-xuat-canh-ngay-188261120202243697.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Bộ trưởng Tài chính: Nộp đủ thuế sẽ được gỡ hoãn xuất cảnh ngay",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/canh-bao-no-thue-nguoi-dan-can-chu-dong-kiem-tra-thong-tin-18826112015222128.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Cảnh báo nợ thuế: Người dân cần chủ động kiểm tra thông tin",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/quoc-hoi-chot-ap-thue-02-voi-dat-bo-hoang-tu-1-7-2027-188261120155527351.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Quốc hội chốt áp thuế 0,2% với đất bỏ hoang từ 1/7/2027",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/du-kien-gan-11300-ty-dau-tu-5-du-an-giao-thong-tai-quang-tri-188261120154456291.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Dự kiến gần 11.300 tỷ đầu tư 5 dự án giao thông tại Quảng Trị",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/quoc-hoi-chot-giu-khung-tien-dat-truoc-20-50-doi-voi-dau-gia-dat-o-188261120112659155.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Quốc hội \"chốt\" giữ khung tiền đặt trước 20%-50% đối với đấu giá đất ở",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/quy-dinh-ro-trach-nhiem-cua-8-bo-nganh-trong-tham-dinh-chinh-sach-188261120131808135.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Quy định rõ trách nhiệm của 8 bộ, ngành trong thẩm định chính sách",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/tin-cuc-vui-cho-toan-bo-doanh-nghiep-co-doanh-thu-duoi-10-ty-dong-nam-188261120114300402.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Tin cực vui cho toàn bộ doanh nghiệp có doanh thu dưới 10 tỷ đồng/năm",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/quy-dinh-ve-tien-luong-va-thoi-gian-cong-tac-de-tinh-huong-che-do-doi-voi-quan-nhan-cong-nhan-vien-chuc-quoc-phong-188261120090519833.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Quy định về tiền lương và thời gian công tác để tính hưởng chế độ đối với quân nhân, công nhân, viên chức quốc phòng",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/quy-hoach-song-hong-dong-luc-phat-trien-moi-cua-thu-do-tu-hoi-tu-he-thong-giao-thong-188261120075341824.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Quy hoạch sông Hồng: Động lực phát triển mới của Thủ đô từ hội tụ hệ thống giao thông",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/hom-nay-quoc-hoi-bat-dau-dot-2-ky-hop-thu-2-188261120075126977.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Hôm nay, Quốc hội bắt đầu đợt 2, kỳ họp thứ 2",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/bat-dau-tu-hom-nay-20-11-quoc-hoi-se-bieu-quyet-thong-qua-nhieu-luat-nghi-quyet-ve-thue-su-dung-dat-phi-nong-nghiep-thue-tncn-doanh-nghiep-188261119223842643.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Bắt đầu từ hôm nay (20/11), Quốc hội sẽ biểu quyết thông qua nhiều luật, nghị quyết về thuế sử dụng đất phi nông nghiệp, thuế TNCN, doanh nghiệp...",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/thu-tuong-trinh-quoc-hoi-xem-xet-mien-thue-tndn-khong-tinh-tien-su-dung-dat-doi-voi-cac-co-so-giao-duc-khong-vi-muc-tieu-loi-nhuan-ke-ca-cong-va-tu-188261119223118597.chn": {
+      "source_id": "cafef-vimo",
+      "title": "Thủ tướng: Trình Quốc hội xem xét miễn thuế TNDN, không tính tiền sử dụng đất đối với các cơ sở giáo dục không vì mục tiêu lợi nhuận, kể cả công và tư",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://cafef.vn/csgt-de-nghi-425-chu-phuong-tien-vi-pham-co-bien-so-sau-khan-truong-den-nop-phat-nguoi-theo-nghi-dinh-168-188261119170153146.chn": {
+      "source_id": "cafef-vimo",
+      "title": "CSGT đề nghị 425 chủ phương tiện vi phạm có biển số sau khẩn trương đến nộp phạt nguội theo Nghị định 168",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/google-chon-doi-thu-cua-elon-musk-xay-trung-tam-du-lieu-khong-gian-5146825.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Google chọn đối thủ của Elon Musk xây trung tâm dữ liệu không gian",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/ceo-amd-lan-dau-nhac-den-nguoi-chu-jensen-huang-sau-be-boi-5146833.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "CEO AMD lần đầu nhắc đến người chú Jensen Huang sau bê bối",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/ky-su-anthropic-dung-sau-tham-vong-lap-trinh-vien-khong-can-viet-code-5145193.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Kỹ sư Anthropic đứng sau tham vọng 'lập trình viên không cần viết code'",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/apple-dang-thu-nghiem-hai-thiet-ke-cho-iphone-20-5146303.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Apple 'đang thử nghiệm hai thiết kế cho iPhone 20'",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/nha-khoa-hoc-ban-ung-dung-ai-trong-y-te-tai-vinfuture-2026-5147197.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Nhà khoa học bàn ứng dụng AI trong y tế tại VinFuture 2026",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/vnpt-ra-mat-modem-wi-fi-8-tich-hop-ai-5146630.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "VNPT ra mắt modem Wi-Fi 8 tích hợp AI",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/google-phat-hien-cuoc-tan-cong-hoan-toan-tu-dong-bang-ai-5146302.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Google phát hiện cuộc tấn công hoàn toàn tự động bằng AI",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/lo-hong-java-moi-lam-day-len-lo-ngai-ve-an-ninh-mang-5146330.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Lỗ hổng Java mới làm dấy lên lo ngại về an ninh mạng",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/madison-huang-ban-thu-nho-cua-jensen-huang-tai-nvidia-5146212.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Madison Huang - 'bản thu nhỏ' của Jensen Huang tại Nvidia",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/ai-thay-doi-cach-con-nguoi-thi-cong-metro-duong-ham-5145811.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "AI thay đổi cách con người thi công metro, đường hầm",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/my-su-dung-he-thong-ai-de-dieu-phoi-khong-luu-5145797.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Mỹ sử dụng hệ thống AI để điều phối không lưu",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/viet-nam-day-manh-dua-ai-vao-hoat-dong-thuc-te-5146217.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Việt Nam đẩy mạnh đưa AI vào hoạt động thực tế",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/ai-dang-noi-rong-khoang-cach-giua-tan-cong-va-phong-thu-mang-5142220.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "'AI đang nới rộng khoảng cách giữa tấn công và phòng thủ mạng'",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/jensen-huang-mat-tich-xanh-tren-x-musk-khoi-phuc-mien-phi-5145889.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Jensen Huang mất 'tích xanh' trên X, Musk 'khôi phục miễn phí'",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://vnexpress.net/dien-thoai-hai-man-hinh-cua-xiaomi-ve-viet-nam-gia-tu-40-trieu-dong-5145867.html": {
+      "source_id": "vnexpress-congnghe",
+      "title": "Điện thoại hai màn hình của Xiaomi về Việt Nam, giá từ 40 triệu đồng",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/20/a-transcription-firm-used-by-police-prosecutors-and-tech-giants-exposed-customer-data-online": {
+      "source_id": "techcrunch-ai",
+      "title": "A transcription firm used by police, prosecutors and tech giants exposed customer data online",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/20/6-ai-powered-gadgets-that-could-make-your-home-office-smarter": {
+      "source_id": "techcrunch-ai",
+      "title": "Six AI-powered gadgets that could make your home office smarter",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/20/behind-jensen-huangs-exit-questions-about-a-management-style-reportedly-built-on-fear": {
+      "source_id": "techcrunch-ai",
+      "title": "Behind Jensen Huang’s exit, questions about a management style reportedly built on fear",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/20/california-ag-subpoenas-nvidia-over-worries-about-huangs-ties-with-china": {
+      "source_id": "techcrunch-ai",
+      "title": "California AG subpoenas Nvidia over worries about Huang’s ties with China",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/19/apple-may-be-developing-its-own-ai-agent-that-runs-your-mac": {
+      "source_id": "techcrunch-ai",
+      "title": "Apple may be developing its own AI agent that runs your Mac",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/19/anthropics-7-founders-cashed-out-nearly-2b-in-record-breaking-ipo": {
+      "source_id": "techcrunch-ai",
+      "title": "Anthropic’s 7 founders cashed out nearly $2B in record-breaking IPO",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/19/anthropic-rival-says-companies-can-mostly-skip-the-pricey-models": {
+      "source_id": "techcrunch-ai",
+      "title": "Anthropic rival says companies can (mostly) skip the pricey models",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/19/want-to-see-your-live-ai-usage-on-your-macs-icons-this-clever-new-app-lets-you": {
+      "source_id": "techcrunch-ai",
+      "title": "Want to see your live AI usage on your Mac’s icons? This clever new app lets you",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/19/metas-new-muse-charm-device-may-cost-300": {
+      "source_id": "techcrunch-ai",
+      "title": "Meta’s new Muse Charm device may cost $300",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
+    },
+    "https://techcrunch.com/2026/11/19/these-tech-outages-are-giving-y2k-ai-agent-style": {
+      "source_id": "techcrunch-ai",
+      "title": "These tech outages are giving Y2K, AI agent style",
+      "first_seen_at": "2026-11-21 00:02:21 GMT+7"
     }
   }
 }
