@@ -1,4 +1,280 @@
 {
-  "initialized_sources": [],
-  "seen": {}
+  "initialized_sources": [
+    "iig-thong-bao",
+    "iig-tin-tuc",
+    "ptit-thong-bao",
+    "ptit-tin-tuc"
+  ],
+  "seen": {
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-lich-nghi-ngay-van-hoa-viet-nam-24-11": {
+      "source_id": "iig-thong-bao",
+      "title": "Thông báo lịch nghỉ Ngày Văn hóa Việt Nam 24/11",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-lich-cung-cap-dich-vu-trong-thoi-gian-tap-huan-noi-bo-tai-van-phong-giang-van-minh-ha-noi-tu-ngay-24-10-den-he": {
+      "source_id": "iig-thong-bao",
+      "title": "Thông báo lịch cung cấp dịch vụ trong thời gian tập huấn nội bộ tại Văn phòng Giang Văn Minh (Hà Nội) từ ngày 24/10 đến hết ngày 26/10/2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-chuyen-dia-diem-moi-van-phong-iig-viet-nam-tai-da-nang": {
+      "source_id": "iig-thong-bao",
+      "title": "Thông báo chuyển địa điểm mới – văn phòng IIG Việt Nam tại Đà Nẵng",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/the-le-chuoi-su-kien-tram-trai-nghiem-toeic-station-danh-cho-sinh-vien-cac-truong-dai-hoc": {
+      "source_id": "iig-thong-bao",
+      "title": "THỂ LỆ CHUỖI SỰ KIỆN: TRẠM TRẢI NGHIỆM TOEIC STATION DÀNH CHO SINH VIÊN CÁC TRƯỜNG ĐẠI HỌC",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-lich-nghi-le-quoc-khanh-2-9-2": {
+      "source_id": "iig-thong-bao",
+      "title": "Thông báo lịch nghỉ lễ Quốc khánh 2/9",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/iig-viet-nam-chinh-thuc-trien-khai-bai-thi-nang-luc-tieng-nhat-truc-tuyen-jot-japanese-online-test": {
+      "source_id": "iig-thong-bao",
+      "title": "IIG Việt Nam chính thức triển khai bài thi năng lực tiếng Nhật trực tuyến JOT (Japanese Online Test)",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-cap-nhat-mau-chung-chi-toeic-speaking-writing-va-toeic-speaking": {
+      "source_id": "iig-thong-bao",
+      "title": "Thông báo cập nhật mẫu chứng chỉ TOEIC Speaking & Writing và TOEIC Speaking",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/chinh-sach-va-dieu-khoan-thanh-toan": {
+      "source_id": "iig-thong-bao",
+      "title": "Chính sách và điều khoản thanh toán",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-lich-cung-cap-dich-vu-trong-thoi-gian-tap-huan-noi-bo-thang-7-2026": {
+      "source_id": "iig-thong-bao",
+      "title": "Thông báo lịch cung cấp dịch vụ trong thời gian tập huấn nội bộ tháng 7/2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-ket-qua-vong-chung-ket-quoc-gia-cuoc-thi-vo-dich-thiet-ke-do-hoa-the-gioi-acp-2026": {
+      "source_id": "iig-thong-bao",
+      "title": "Thông báo kết quả Vòng chung kết Quốc gia Cuộc thi Vô địch Thiết kế đồ họa thế giới ACP 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-ve-viec-chuan-hoa-he-thong-chung-nhan-toeic-listening-reading-theo-nhan-dien-toan-cau-cua-ets": {
+      "source_id": "iig-thong-bao",
+      "title": "Thông báo về việc chuẩn hóa hệ thống chứng nhận TOEIC Listening & Reading theo nhận diện toàn cầu của ETS",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/co-hoi-trai-nghiem-bai-thi-noi-topik-topik-speaking-hoan-toan-mien-phi": {
+      "source_id": "iig-thong-bao",
+      "title": "Cơ hội trải nghiệm bài thi nói TOPIK (TOPIK Speaking) – Hoàn toàn miễn phí",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/chinh-thuc-khoi-dong-cuoc-thi-tin-hoc-quoc-te-thanh-pho-ho-chi-minh-nam-hoc-2026-2027": {
+      "source_id": "iig-tin-tuc",
+      "title": "Chính thức khởi động Cuộc thi Tin học quốc tế – Thành phố Hồ Chí Minh năm học 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/ha-tinh-chinh-thuc-phat-dong-cuoc-thi-tieng-anh-quoc-te-toefl-challenge-nam-hoc-2026-2027-danh-dau-15-thap-ky-dong-hanh": {
+      "source_id": "iig-tin-tuc",
+      "title": "[Hà Tĩnh] Chính thức phát động cuộc thi tiếng Anh quốc tế TOEFL Challenge năm học 2026 – 2027, đánh dấu 1,5 thập kỷ đồng hành cùng học sinh Việt Nam!",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/hai-phong-chinh-thuc-phat-dong-mua-giai-moi-cuoc-thi-tieng-anh-quoc-te-toefl-challenge-nam-hoc-2026-2027-danh-dau-15-tha": {
+      "source_id": "iig-tin-tuc",
+      "title": "[Hải Phòng] Chính thức phát động mùa giải mới cuộc thi tiếng Anh quốc tế TOEFL Challenge năm học 2026 – 2027, đánh dấu 1,5 thập kỷ đồng hành cùng học sinh Việt Nam!",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/chinh-thuc-phat-dong-cuoc-thi-ai-chuan-quoc-te-danh-cho-hoc-sinh-thpt-ai-or-behind-nam-hoc-2026-2027-khong-ai-bi-bo-lai": {
+      "source_id": "iig-tin-tuc",
+      "title": "Chính thức phát động Cuộc thi AI chuẩn quốc tế dành cho học sinh THPT – AI or Behind năm học 2026-2027: Không AI bị bỏ lại phía sau",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/vinh-danh-dai-su-toeic-cong-ty-cp-cong-nghe-just-in-time-solutions": {
+      "source_id": "iig-tin-tuc",
+      "title": "Vinh danh Đại sứ TOEIC Công ty CP Công nghệ Just-in-time Solutions",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/iig-viet-nam-ky-ket-hop-tac-voi-truong-thpt-chi-lang-va-truong-tieu-hoc-thcs-thpt-sao-viet-trien-khai-chuong-trinh-genai": {
+      "source_id": "iig-tin-tuc",
+      "title": "IIG Việt Nam ký kết hợp tác với Trường THPT Chi Lăng và Trường Tiểu học, THCS, THPT Sao Việt, triển khai chương trình GenAI và ESB cho học sinh các cấp",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/dai-hoc-cong-nghe-cao-texas-dai-hoc-hang-dau-bang-texas-lua-chon-sanako-study-1200": {
+      "source_id": "iig-tin-tuc",
+      "title": "Đại học Công nghệ Texas – Đại học hàng đầu bang Texas lựa chọn Sanako Study 1200",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/hung-yen-co-hoi-tham-du-mien-phi-bai-thi-trai-nghiem-toefl-tai-cuoc-thi-tieng-anh-quoc-te-toefl-challenge-2026-2027": {
+      "source_id": "iig-tin-tuc",
+      "title": "[Hưng Yên] Cơ hội tham dự miễn phí bài thi trải nghiệm TOEFL tại cuộc thi tiếng Anh quốc tế TOEFL Challenge 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/phu-tho-chinh-thuc-phat-dong-cuoc-thi-tieng-anh-quoc-te-toefl-challenge-nam-hoc-2026-2027-danh-dau-15-thap-ky-dong-hanh": {
+      "source_id": "iig-tin-tuc",
+      "title": "[Phú Thọ] Chính thức phát động cuộc thi tiếng Anh quốc tế TOEFL Challenge năm học 2026 – 2027, đánh dấu 1,5 thập kỷ đồng hành cùng học sinh Việt Nam!",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/hung-yen-chinh-thuc-khoi-tranh-mua-giai-moi-cuoc-thi-tieng-anh-quoc-te-toefl-challenge-nam-hoc-2026-2027-danh-dau-15-tha": {
+      "source_id": "iig-tin-tuc",
+      "title": "[Hưng Yên] Chính thức khởi tranh mùa giải mới Cuộc thi tiếng Anh quốc tế TOEFL Challenge năm học 2026 – 2027, đánh dấu 1,5 thập kỷ đồng hành cùng học sinh Việt Nam!",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/bac-ninh-co-hoi-tham-du-mien-phi-bai-thi-trai-nghiem-toefl-tai-cuoc-thi-tieng-anh-quoc-te-toefl-challenge-2026-2027": {
+      "source_id": "iig-tin-tuc",
+      "title": "[Bắc Ninh] Cơ hội tham dự miễn phí bài thi trải nghiệm TOEFL tại cuộc thi tiếng Anh quốc tế TOEFL Challenge 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/dau-an-viet-nam-tai-hoi-nghi-doi-tac-giao-duc-toan-cau-pearson-global-partner-summit-gps-2026": {
+      "source_id": "iig-tin-tuc",
+      "title": "Dấu ấn Việt Nam tại Hội nghị Đối tác Giáo dục Toàn cầu Pearson (Global Partner Summit – GPS) 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://iigvietnam.com/vi/tin-tuc/thong-bao-thoi-gian-va-dia-diem-to-chuc-le-tong-ket-va-trao-giai-quoc-gia-cuoc-thi-mos-world-championship-2026": {
+      "source_id": "iig-tin-tuc",
+      "title": "Thông báo thời gian và địa điểm tổ chức Lễ Tổng kết và Trao giải Quốc gia Cuộc thi MOS World Championship 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-tam-hoan-phat-bang-le-tai-co-so-dao-tao-ha-dong-trong-tuan-46-2026": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo: Tạm hoãn phát bằng lẻ tại Cơ sở đào tạo Hà Đông trong tuần 46/2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/hoc-vien-cong-nghe-buu-chinh-vien-thong-tuyen-dung-giang-vien-trinh-do-tien-si-co-kha-nang-nghien-cuu-khoa-hoc-noi-troi": {
+      "source_id": "ptit-thong-bao",
+      "title": "Học viện Công nghệ Bưu chính Viễn thông tuyển dụng: giảng viên trình độ tiến sĩ có khả năng nghiên cứu khoa học nổi trội",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/hoc-vien-cong-nghe-buu-chinh-vien-thong-thong-bao-tuyen-dung-chuyen-gia-phap-che": {
+      "source_id": "ptit-thong-bao",
+      "title": "Học viện Công nghệ Bưu chính Viễn thông thông báo tuyển dụng Chuyên gia pháp chế",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/ptit-phat-dong-huong-ung-ngay-chuyen-doi-so-quoc-gia-10-10-2026-thay-anh-dai-dien-lan-toa-tinh-than-so": {
+      "source_id": "ptit-thong-bao",
+      "title": "PTIT phát động hưởng ứng Ngày Chuyển đổi số quốc gia 10/10/2026: Thay ảnh đại diện, lan tỏa tinh thần số",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-ket-qua-tuyen-dung-vien-chuc-dot-1-nam-2026-cua-hoc-vien-cong-nghe-buu-chinh-vien-thong": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo kết quả tuyển dụng viên chức đợt 1 năm 2026 của Học viện Công nghệ Bưu chính Viễn thông",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-ve-viec-lua-chon-to-chuc-tham-dinh-gia-tai-san-3": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo về việc lựa chọn tổ chức thẩm định giá tài sản",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-trieu-tap-ung-vien-tham-gia-xet-tuyen-vong-2-ky-tuyen-dung-vien-chuc-dot-1-nam-2026-cua-hoc-vien-cong-nghe-buu-chinh-vien-thong": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo triệu tập ứng viên tham gia xét tuyển vòng 2 kỳ tuyển dụng viên chức đợt 1 năm 2026 của Học viện Công nghệ Bưu chính Viễn thông",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-ket-qua-xet-tuyen-vong-1-ky-tuyen-dung-vien-chuc-dot-01-nam-2026-cua-hoc-vien": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo kết quả xét tuyển vòng 1 kỳ tuyển dụng viên chức đợt 01 năm 2026 của Học viện",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/phat-dong-sinh-vien-hoc-vien-tham-gia-cuoc-thi-ai-thuc-chien-2026": {
+      "source_id": "ptit-thong-bao",
+      "title": "Phát động sinh viên Học viện tham gia cuộc thi “AI Thực chiến – 2026”",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/cuoc-thi-truc-tuyen-tim-hieu-chinh-sach-phap-luat-dan-so-trong-tinh-hinh-moi": {
+      "source_id": "ptit-thong-bao",
+      "title": "Cuộc thi trực tuyến tìm hiểu chính sách, pháp luật dân số trong tình hình mới",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-ve-viec-trien-khai-dang-ky-tham-gia-chuong-trinh-sinh-vien-the-he-moi-2026": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo về việc triển khai đăng ký tham gia Chương trình “Sinh viên Thế hệ mới 2026”",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-ve-viec-huong-ung-tham-gia-cuoc-thi-truc-tuyen-tren-cong-phap-luat-quoc-gia-tim-hieu-hien-phap-va-phap-luat": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo về việc hưởng ứng, tham gia Cuộc thi trực tuyến trên Cổng Pháp luật quốc gia “Tìm hiểu Hiến pháp và pháp luật”",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-ket-qua-xet-bo-nhiem-chuc-danh-giao-su-pho-giao-su-tai-hoc-vien-cong-nghe-buu-chinh-vien-thong-nam-2026": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo kết quả xét bổ nhiệm chức danh Giáo sư, Phó Giáo sư tại Học viện Công nghệ Bưu chính Viễn thông năm 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-ve-viec-tham-gia-cuoc-thi-giai-thuong-moi-truong-quoc-te-the-gioi-moi-truong-nam-2026": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo về việc tham gia Cuộc thi Giải thưởng Môi trường quốc tế “Thế giới Môi trường” năm 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/thong-bao-diem-chuan-trung-tuyen-vao-dai-hoc-he-chinh-quy-nam-2026": {
+      "source_id": "ptit-thong-bao",
+      "title": "Thông báo Điểm chuẩn trúng tuyển vào đại học hệ chính quy năm 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/hoc-vien-cong-nghe-buu-chinh-vien-thong-ky-niem-44-nam-ngay-nha-giao-viet-nam-don-nhan-co-thi-dua-cua-chinh-phu-va-phat-dong-300-ngay-dem-nguoc-huong-toi-30-nam-thanh-lap": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Học viện Công nghệ Bưu chính Viễn thông kỷ niệm 44 năm Ngày Nhà giáo Việt Nam, đón nhận Cờ thi đua của Chính phủ và phát động “300 ngày đếm ngược” hướng tới 30 năm thành lập",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/hoc-vien-cong-nghe-buu-chinh-vien-thong-tung-bung-to-chuc-cac-hoat-dong-chao-mung-ngay-nha-giao-viet-nam-20-11": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Học viện Công nghệ Bưu chính Viễn thông tưng bừng tổ chức các hoạt động chào mừng Ngày Nhà giáo Việt Nam 20/11",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/hoc-vien-cong-nghe-buu-chinh-vien-thong-gap-mat-tri-an-can-bo-lanh-dao-qua-cac-thoi-ky-nhan-ky-niem-ngay-nha-giao-viet-nam": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Học viện Công nghệ Bưu chính Viễn thông gặp mặt, tri ân cán bộ lãnh đạo qua các thời kỳ nhân kỷ niệm Ngày Nhà giáo Việt Nam",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/sinh-vien-ptit-duoc-vinh-danh-thu-khoa-xuat-sac-thu-do-nam-2026": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Sinh viên PTIT được vinh danh Thủ khoa xuất sắc Thủ đô năm 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/hoc-vien-cong-nghe-buu-chinh-vien-thong-tham-gia-dien-dan-ket-noi-cong-nghe-va-doi-moi-sang-tao-viet-nam-vung-vinh-lon-trung-quoc": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Học viện Công nghệ Bưu chính Viễn thông tham gia Diễn đàn Kết nối công nghệ và đổi mới sáng tạo Việt Nam – Vùng Vịnh lớn Trung Quốc",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/sinh-vien-ptit-phat-huy-the-manh-cong-nghe-chong-lua-dao-mang": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Sinh viên PTIT phát huy thế mạnh công nghệ chống lừa đảo mạng",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/hoc-vien-cong-nghe-buu-chinh-vien-thong-tuyen-duong-khen-thuong-sinh-vien-dat-thanh-tich-cao-trong-cac-hoat-dong": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Học viện Công nghệ Bưu chính Viễn thông tuyên dương, khen thưởng sinh viên đạt thành tích cao trong các hoạt động",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/ton-vinh-cac-nha-giao-tieu-bieu-sinh-vien-5-tot-cap-doan-thanh-nien-chinh-phu-nam-2026": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Tôn vinh các nhà giáo tiêu biểu, sinh viên 5 tốt cấp Đoàn thanh niên Chính phủ năm 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/trung-tam-dao-tao-buu-chinh-vien-thong-thong-bao-tuyen-dung-nhan-su-nam-2026": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Trung tâm Đào tạo Bưu chính Viễn thông thông báo tuyển dụng nhân sự năm 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/sing-to-learn-ptit-2026-lan-toa-dam-me-ket-noi-tai-nang-am-nhac-tre": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Sing to Learn PTIT 2026: Lan tỏa đam mê, kết nối tài năng âm nhạc trẻ",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/hoc-vien-cong-nghe-buu-chinh-vien-thong-tiep-nhan-truong-cao-dang-thong-tin-va-truyen-thong": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Học viện Công nghệ Bưu chính Viễn thông tiếp nhận trường Cao đẳng Thông tin và Truyền thông",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/cyberz-unitour-2026-den-hoc-vien-cong-nghe-buu-chinh-vien-thong-lan-toa-ky-nang-phong-chong-lua-dao": {
+      "source_id": "ptit-tin-tuc",
+      "title": "CyberZ UniTour 2026 đến Học viện Công nghệ Bưu chính Viễn thông, lan tỏa kỹ năng phòng chống lừa đảo",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/44269-2": {
+      "source_id": "ptit-tin-tuc",
+      "title": "Sinh viên Học viện Công nghệ Bưu chính Viễn thông sôi nổi giới thiệu kết quả nghiên cứu tại Hội nghị Khoa học Sinh viên lần thứ 18 năm 2026",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://ptit.edu.vn/ptit-ky-ket-thu-bay-to-y-dinh-hop-tac-voi-dai-hoc-toulon-phap-thuc-day-nghien-cuu-robot-va-tri-tue-nhan-tao": {
+      "source_id": "ptit-tin-tuc",
+      "title": "PTIT ký kết Thư bày tỏ ý định hợp tác với Đại học Toulon (Pháp), thúc đẩy nghiên cứu Robot và Trí tuệ nhân tạo",
+      "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    }
+  }
 }
