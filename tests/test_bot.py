@@ -8,7 +8,14 @@ from unittest.mock import MagicMock, patch
 
 from src.content_extractor import _extract_from_html
 from src.fetchers import _extract_html_articles, _parse_rss_xml
-from src.models import AISummary, Article, SourceConfig, meets_min_importance, normalize_url
+from src.models import (
+    AISummary,
+    Article,
+    SourceConfig,
+    meets_min_importance,
+    normalize_url,
+    parse_published_datetime,
+)
 from src.notifier import build_email_bodies, build_email_subject
 from src.runner import run_once
 from src.state import StateStore
@@ -269,6 +276,12 @@ class TestNotificationBot(unittest.TestCase):
             saved = json.loads(state_path.read_text(encoding="utf-8"))
             self.assertIn("https://news.test/pr", saved["seen"])
             self.assertIn("https://news.test/exam", saved["seen"])
+
+    def test_parse_published_datetime(self) -> None:
+        dt = parse_published_datetime("20/11/2026 11:18")
+        self.assertIsNotNone(dt)
+        self.assertEqual((dt.year, dt.month, dt.day), (2026, 11, 20))
+        self.assertIsNone(parse_published_datetime("invalid"))
 
 
 if __name__ == "__main__":

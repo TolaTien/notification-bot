@@ -23,6 +23,23 @@ def now_vn_iso() -> str:
     return datetime.now(VN_TZ).strftime("%Y-%m-%d %H:%M:%S GMT+7")
 
 
+def parse_published_datetime(raw: str) -> datetime | None:
+    """Parse common date formats produced by fetchers into a VN-timezone datetime."""
+    cleaned = (raw or "").strip()
+    if not cleaned:
+        return None
+    for fmt in ("%d/%m/%Y %H:%M", "%d/%m/%Y", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(cleaned, fmt).replace(tzinfo=VN_TZ)
+        except ValueError:
+            continue
+    try:
+        dt = datetime.fromisoformat(cleaned.replace("Z", "+00:00"))
+        return dt.astimezone(VN_TZ) if dt.tzinfo else dt.replace(tzinfo=VN_TZ)
+    except ValueError:
+        return None
+
+
 def normalize_url(url: str) -> str:
     """Normalize a URL for reliable deduplication across scrapes."""
     cleaned = url.strip()

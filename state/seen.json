@@ -2,6 +2,8 @@
   "initialized_sources": [
     "iig-thong-bao",
     "iig-tin-tuc",
+    "ptit-daotao",
+    "ptit-giaovu",
     "ptit-thong-bao",
     "ptit-tin-tuc"
   ],
@@ -275,6 +277,156 @@
       "source_id": "ptit-tin-tuc",
       "title": "PTIT ký kết Thư bày tỏ ý định hợp tác với Đại học Toulon (Pháp), thúc đẩy nghiên cứu Robot và Trí tuệ nhân tạo",
       "first_seen_at": "2026-11-20 22:44:43 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/thong-bao-v-v-to-chuc-dang-ky-hoc-phan-giang-day-bang-tieng-anh-hoc-ky-ii-nam-hoc-2026-2027": {
+      "source_id": "ptit-giaovu",
+      "title": "Thông báo: V/v Tổ chức đăng ký học phần giảng dạy bằng tiếng Anh học kỳ II năm học 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/thong-bao-ve-viec-to-chuc-dang-ky-hoc-vuot-hoc-ky-ii-nam-hoc-2026-2027": {
+      "source_id": "ptit-giaovu",
+      "title": "Thông báo: Về việc tổ chức đăng ký học vượt học kỳ II năm học 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/thong-bao-v-v-nghi-va-dieu-chinh-lich-giang-day-hoc-tap-ngay-van-hoa-viet-nam-24-11-2026": {
+      "source_id": "ptit-giaovu",
+      "title": "Thông báo: V/v nghỉ và điều chỉnh lịch giảng dạy – học tập ngày Văn hóa Việt Nam 24/11/2026",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/tap-trung-pho-bien-ke-hoach-dang-ky-mon-hoc-hoc-ky-ii-nam-hoc-2026-2027": {
+      "source_id": "ptit-giaovu",
+      "title": "Tập trung phổ biến kế hoạch đăng ký môn học học kỳ II năm học 2026-2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/thu-hoc-phi-hoc-lai-lop-ghep-ky-i-nam-hoc-2026-2027-lan-2-va-ke-hoach-thu-hoc-lai-lop-rieng": {
+      "source_id": "ptit-giaovu",
+      "title": "Thu học phí, học lại lớp ghép kỳ I năm học 2026-2027 ( lần 2), và kế hoạch thu học lại lớp riêng",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/ban-hanh-ke-hoach-thi-hoc-ky-1-nam-hoc-2026-2027-cac-lop-dhcq-khoa-202320242025": {
+      "source_id": "ptit-giaovu",
+      "title": "Ban hành Kế hoạch thi học kỳ 1 năm học 2026-2027 các lớp ĐHCQ khóa 2023,2024,2025",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/khao-sat-sinh-vien-ve-nhu-cau-va-muc-do-san-sang-hoc-cac-hoc-phan-giang-day-bang-tieng-anh": {
+      "source_id": "ptit-giaovu",
+      "title": "Khảo sát sinh viên về nhu cầu và mức độ sẵn sàng học các học phần giảng dạy bằng tiếng Anh",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/to-chuc-bien-che-tai-trung-tam-giao-duc-quoc-phong-an-cho-sinh-vien-khoa-2026-dot-2": {
+      "source_id": "ptit-giaovu",
+      "title": "Tổ chức biên chế tại Trung tâm giáo dục Quốc phòng & AN cho sinh viên khóa 2026 (đợt 2)",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/thong-bao-ve-viec-ra-soat-danh-sach-sinh-vien-du-kien-xet-hoc-bong-theo-nghi-dinh-so-179-2026-nd-cp-nam-hoc-2026-2027": {
+      "source_id": "ptit-giaovu",
+      "title": "Thông báo: Về việc rà soát danh sách sinh viên dự kiến xét học bổng theo Nghị định số 179/2026/NĐ-CP năm học 2026–2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/phat-the-sinh-vien-doi-voi-sinh-vien-chinh-quy-khoa-2026": {
+      "source_id": "ptit-giaovu",
+      "title": "Phát thẻ sinh viên đối với sinh viên chính quy khóa 2026",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/cap-tra-chung-chi-gdqpan-cho-sinh-vien-khoa-2025-va-sinh-vien-cac-khoa-truoc-hoc-ghep-cung-khoa-2025": {
+      "source_id": "ptit-giaovu",
+      "title": "Cấp trả chứng chỉ GDQPAN cho sinh viên khóa 2025 và sinh viên các khóa trước học ghép cùng khóa 2025",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/thong-bao-v-v-chuong-trinh-trao-doi-sinh-vien-giua-hai-co-so-dao-tao-hoc-ky-ii-nam-hoc-2026-2027": {
+      "source_id": "ptit-giaovu",
+      "title": "Thông báo V/v: Chương trình trao đổi sinh viên giữa hai cơ sở đào tạo Học kỳ II, năm học 2026–2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/huy-cac-lop-hoc-phan-dot-hoc-lai-lop-rieng-hoc-ky-1-nam-hoc-2026-2027": {
+      "source_id": "ptit-giaovu",
+      "title": "Hủy các lớp học phần đợt học lại lớp riêng học kỳ 1 năm học 2026-2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/ke-hoach-to-chuc-thuc-tap-tich-luy-khoi-kien-thuc-tot-nghiep-cac-lop-dhcq-khoa-2023-2027-nganh-ke-toan-fintech-qtkd-tmdt-marketing-tt-dpt-bao-chi-va-cu-nhan-cntt": {
+      "source_id": "ptit-giaovu",
+      "title": "Kế hoạch tổ chức thực tập tích lũy khối kiến thức tốt nghiệp các lớp: ĐHCQ khóa 2023-2027 (ngành: Kế toán, Fintech, QTKD, TMĐT, Marketing, TT ĐPT, Báo chí và cử nhân CNTT)",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://giaovu.ptit.edu.vn/to-chuc-bien-che-tai-trung-tam-giao-duc-quoc-phong-an-cho-sinh-vien-khoa-2026-dot-1": {
+      "source_id": "ptit-giaovu",
+      "title": "Tổ chức biên chế tại Trung tâm giáo dục Quốc phòng an ninh cho sinh viên khóa 2026 (đợt 1)",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-ke-hoach-to-chuc-thi-chung-chi-toeic-quoc-te-dot-thi-thang-11-2026": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo Kế hoạch tổ chức thi Chứng chỉ TOEIC quốc tế (đợt thi tháng 11/2026)",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-ve-viec-dang-ky-hoc-lieu-cho-hoc-phan-tieng-anh-course-1-course-2-course-3-va-course-3-plus-cua-cac-lop-rieng-hoc-ky-1-nam-hoc-2026-2027": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo về việc Đăng ký học liệu cho học phần tiếng Anh Course 1, Course 2, Course 3 và Course 3 Plus của các lớp riêng – Học kỳ 1 năm học 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/mau-van-bang-cua-hoc-vien-cong-nghe-buu-chinh-vien-thong": {
+      "source_id": "ptit-daotao",
+      "title": "Mẫu văn bằng của Học viện Công nghệ Bưu chính Viễn thông",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-lich-tra-tai-khoan-hoc-truc-tuyen-ed-course-0-va-course-0-clc-nam-hoc-2026-2027": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo lịch trả tài khoản học trực tuyến ED Course 0 và Course 0 CLC năm học 2026 – 2027.",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-lich-tra-tai-khoan-hoc-truc-tuyen-ed-course-1_clc-cho-cac-lop-chat-luong-cao-khoa-d26-cua-hoc-ky-i-nam-hoc-2026-2027": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo Lịch trả tài khoản học trực tuyến ED Course 1_CLC cho các lớp Chất lượng cao khóa D26 của Học kỳ I năm học 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-to-chuc-dao-tao-lop-tieng-anh-bo-tro-course-0-khoa-2026-co-so-dao-tao-phia-bac": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo Tổ chức đào tạo lớp tiếng Anh bổ trợ (Course 0) khóa 2026 – Cơ sở đào tạo phía Bắc",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/5650-2": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo kết quả kiểm tra phân loại trình độ tiếng Anh đầu vào đối với sinh viên đại học hệ Chính quy khoá 2026 (Đợt 2) – Cơ sở đào tạo phía Bắc",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/cong-nhan-tot-nghiep-dot-1-t9-2026": {
+      "source_id": "ptit-daotao",
+      "title": "Công nhận tốt nghiệp đợt 1.T9.2026",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-lich-kiem-tra-phan-loai-trinh-do-tieng-anh-dau-vao-cho-sinh-vien-dai-hoc-chinh-quy-va-sinh-vien-dai-hoc-vlvh-khoa-2026-co-so-dao-tao-phia-bac-2": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo lịch kiểm tra phân loại trình độ tiếng Anh đầu vào cho sinh viên đại học chính quy và sinh viên đại học VLVH khóa 2026 – Cơ sở đào tạo phía Bắc",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-ket-qua-kiem-tra-phan-loai-trinh-do-tieng-anh-dau-vao-doi-voi-sinh-vien-dai-hoc-he-chinh-quy-khoa-2026-co-so-dao-tao-phia-bac": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo Kết quả kiểm tra phân loại trình độ tiếng Anh đầu vào đối với sinh viên đại học hệ chính quy khóa 2026 – Cơ sở đào tạo phía Bắc",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-ve-viec-dang-ky-hoc-lieu-cua-hoc-phan-tieng-anh-course-1-_-clc-cho-cac-lop-chat-luong-cao-khoa-d26-hoc-ky-i-nam-hoc-2026-2027": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo về việc Đăng ký học liệu của học phần tiếng Anh Course 1 _ CLC cho các lớp Chất lượng cao khóa D26 – Học kỳ I năm học 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-lich-tra-chung-chi-toeic-quoc-te-dot-thi-ngay-13-09-2026": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo lịch trả Chứng chỉ TOEIC quốc tế (đợt thi ngày 13/09/2026)",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-lich-kiem-tra-phan-loai-trinh-do-tieng-anh-dau-vao-cho-sinh-vien-dai-hoc-chinh-quy-va-sinh-vien-dai-hoc-vlvh-khoa-2026-co-so-dao-tao-phia-bac": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo Lịch kiểm tra phân loại trình độ tiếng Anh đầu vào cho sinh viên đại học chính quy và sinh viên đại học VLVH khóa 2026 – Cơ sở đào tạo phía Bắc",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-co-bang-thang-8-2026": {
+      "source_id": "ptit-daotao",
+      "title": "THÔNG BÁO CÓ BẰNG THÁNG 8.2026",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
+    },
+    "https://daotao.ptit.edu.vn/thong-bao-lich-tra-tai-khoan-hoc-truc-tuyen-ed-course-2-course-3_clc-va-course-3-plus-cho-cac-lop-khoa-d24-d25-dot-2-cua-hoc-ky-i-nam-hoc-2026-2027": {
+      "source_id": "ptit-daotao",
+      "title": "Thông báo Lịch trả tài khoản học trực tuyến ED Course 2, Course 3_CLC và Course 3 Plus cho các lớp khóa D24, D25 – đợt 2 của Học kỳ I năm học 2026 – 2027",
+      "first_seen_at": "2026-11-20 22:58:28 GMT+7"
     }
   }
 }

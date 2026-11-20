@@ -3,12 +3,19 @@ from __future__ import annotations
 import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import yaml
 
 from src.fetchers import build_http_session, fetch_source
-from src.models import Article, SourceConfig, meets_min_importance
+from src.models import (
+    Article,
+    SourceConfig,
+    VN_TZ,
+    meets_min_importance,
+    parse_published_datetime,
+)
 from src.notifier import send_articles_email
 from src.state import StateStore
 from src.summarizer import enrich_articles_with_ai
@@ -42,6 +49,7 @@ def run_once(
     state_path: str | Path = "state/seen.json",
     dry_run: bool = False,
     notify_initial: bool = False,
+    since_days: int = 0,
     enable_ai: bool = True,
     max_workers: int = 6,
 ) -> RunSummary:
@@ -78,6 +86,11 @@ def run_once(
     to_notify: list[Article] = []
     to_mark_seen: list[Article] = []
     sources_to_init: list[str] = []
+    cutoff_dt = (
+        datetime.now(VN_TZ) - timedelta(days=since_days)
+        if since_days > 0
+        else None
+    )
 
     for source in sources:
         items = fetched_by_id.get(source.id)
@@ -94,11 +107,20 @@ def run_once(
         if is_first_run:
             sources_to_init.append(source.id)
             summary.sources_initialized += 1
+            extra_note = (
+                f" (gửi các bài trong {since_days} ngày gần đây)"
+                if since_days > 0
+                else (
+                    " (và gửi email do bật --notify-initial)"
+                    if notify_initial
+                    else " (không gửi spam bài cũ)"
+                )
+            )
             logger.info(
                 "[%s] Lần chạy đầu tiên: lưu %d bài hiện có làm mốc ban đầu%s.",
                 source.id,
                 len(items),
-                " (và gửi email do bật --notify-initial)" if notify_initial else " (không gửi spam bài cũ)",
+                extra_note,
             )
 
         for article in items:
@@ -111,7 +133,11 @@ def run_once(
                 continue
 
             to_mark_seen.append(article)
-            if not is_first_run or notify_initial:
+            if cutoff_dt is not None:
+                pub_dt = parse_published_datetime(article.published_at)
+                if pub_dt is not None and pub_dt >= cutoff_dt:
+                    to_notify.append(article)
+            elif not is_first_run or notify_initial:
                 to_notify.append(article)
 
     summary.new_articles = to_notify

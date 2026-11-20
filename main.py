@@ -52,6 +52,12 @@ def parse_args() -> argparse.Namespace:
         help="Gửi email luôn các bài ở lần chạy đầu tiên của một nguồn (dùng khi muốn test).",
     )
     parser.add_argument(
+        "--since-days",
+        type=int,
+        default=0,
+        help="Chỉ gửi email các bài chưa đọc được đăng trong N ngày gần đây nhất (vd: --since-days 5).",
+    )
+    parser.add_argument(
         "--no-ai",
         action="store_true",
         help="Tắt bước tóm tắt bằng AI (chỉ gửi tiêu đề & đoạn trích gốc).",
@@ -129,6 +135,7 @@ def main() -> int:
                     state_path=args.state,
                     dry_run=args.dry_run,
                     notify_initial=args.notify_initial,
+                    since_days=args.since_days,
                     enable_ai=not args.no_ai,
                 )
             except Exception as exc:
@@ -140,6 +147,7 @@ def main() -> int:
         state_path=args.state,
         dry_run=args.dry_run,
         notify_initial=args.notify_initial,
+        since_days=args.since_days,
         enable_ai=not args.no_ai,
     )
     if summary.sources_checked > 0 and summary.sources_failed == summary.sources_checked:
