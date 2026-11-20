@@ -106,6 +106,173 @@ sources:
     content_selector: ".post-content"
 
   # ==========================================================
+  # 3. NGUỒN CHÍNH PHỦ — NOXH, ĐẤT ĐAI, GIAO THÔNG, CHÍNH SÁCH MỚI
+  # (Nguồn chính thống đăng có chọn lọc -> KHÔNG chặn min_importance)
+  # ==========================================================
+  - id: soxaydung-hanoi-noxh-gt
+    name: "Sở Xây dựng Hà Nội - NOXH & Giao thông"
+    url: "https://soxaydung.hanoi.gov.vn/"
+    type: html
+    enabled: true
+    limit: 15
+    color: "#0F766E"
+    link_selector: "a[href$='.htm']"
+    include_patterns:
+      - "/phat-trien-nha-o/"
+      - "/quan-ly-giao-thong-van-tai/"
+
+  - id: chinhphu-chinh-sach-moi
+    name: "Báo Chính phủ - Chính sách mới"
+    url: "https://xaydungchinhsach.chinhphu.vn/chinh-sach-moi.rss"
+    type: rss
+    enabled: true
+    limit: 20
+    color: "#B45309"
+    keywords:
+      - "đất đai"
+      - "nhà ở xã hội"
+      - "noxh"
+      - "sổ đỏ"
+      - "bảng giá đất"
+      - "giao thông"
+      - "bằng lái"
+      - "giấy phép lái xe"
+      - "xử phạt"
+      - "đăng kiểm"
+      - "thuế"
+      - "lãi suất"
+      - "tài chính"
+      - "ngân hàng"
+      - "tiền lương"
+      - "công nghệ"
+      - "trí tuệ nhân tạo"
+      - "chuyển đổi số"
+
+  # ==========================================================
+  # 4. BÁO CHÍ TẦN SUẤT CAO — CHỈ NHẬN BÀI MỨC ĐỘ "CAO" (AI TỰ LỌC)
+  # ==========================================================
+  - id: vnexpress-bds-noxh
+    name: "VnExpress - Đất đai & NOXH"
+    url: "https://vnexpress.net/rss/bat-dong-san.rss"
+    type: rss
+    enabled: true
+    limit: 20
+    color: "#047857"
+    min_importance: "Cao"
+    keywords:
+      - "nhà ở xã hội"
+      - "noxh"
+      - "luật đất đai"
+      - "đất đai"
+      - "bảng giá đất"
+      - "sổ đỏ"
+      - "thu hồi đất"
+      - "đền bù"
+      - "thuế bất động sản"
+      - "chung cư"
+
+  - id: vnexpress-phapluat-giaothong
+    name: "VnExpress - Pháp luật & Giao thông"
+    url: "https://vnexpress.net/rss/phap-luat.rss"
+    type: rss
+    enabled: true
+    limit: 20
+    color: "#C2410C"
+    min_importance: "Cao"
+    keywords:
+      - "giao thông"
+      - "phạt nguội"
+      - "nghị định"
+      - "luật"
+      - "bằng lái"
+      - "giấy phép lái xe"
+      - "đăng kiểm"
+      - "đất đai"
+      - "nhà ở xã hội"
+      - "thuế"
+
+  - id: cafef-taichinh-nganhang
+    name: "CafeF - Tài chính & Ngân hàng"
+    url: "https://cafef.vn/tai-chinh-ngan-hang.rss"
+    type: rss
+    enabled: true
+    limit: 15
+    color: "#1D4ED8"
+    min_importance: "Cao"
+    keywords:
+      - "lãi suất"
+      - "ngân hàng nhà nước"
+      - "nhà ở xã hội"
+      - "gói vay"
+      - "tỷ giá"
+      - "vàng"
+      - "thuế"
+      - "chính sách"
+      - "tín dụng"
+
+  - id: cafef-vimo
+    name: "CafeF - Vĩ mô & Chính sách"
+    url: "https://cafef.vn/vi-mo-dau-tu.rss"
+    type: rss
+    enabled: true
+    limit: 15
+    color: "#1E40AF"
+    min_importance: "Cao"
+    keywords:
+      - "luật"
+      - "nghị định"
+      - "đất đai"
+      - "nhà ở xã hội"
+      - "giao thông"
+      - "thuế"
+      - "lãi suất"
+      - "đầu tư công"
+      - "gdp"
+      - "lạm phát"
+
+  - id: vnexpress-congnghe
+    name: "VnExpress - Công nghệ & AI"
+    url: "https://vnexpress.net/rss/so-hoa.rss"
+    type: rss
+    enabled: true
+    limit: 15
+    color: "#6D28D9"
+    min_importance: "Cao"
+    keywords:
+      - "ai"
+      - "trí tuệ nhân tạo"
+      - "chip"
+      - "bán dẫn"
+      - "openai"
+      - "google"
+      - "apple"
+      - "microsoft"
+      - "nvidia"
+      - "bảo mật"
+      - "lỗ hổng"
+      - "luật"
+
+  - id: techcrunch-ai
+    name: "TechCrunch - Công nghệ & AI Quốc tế"
+    url: "https://techcrunch.com/feed/"
+    type: rss
+    enabled: true
+    limit: 10
+    color: "#15803D"
+    min_importance: "Cao"
+    keywords:
+      - "ai"
+      - "openai"
+      - "google"
+      - "anthropic"
+      - "gemini"
+      - "claude"
+      - "nvidia"
+      - "security"
+      - "breach"
+      - "launch"
+
+  # ==========================================================
   # MẪU THÊM WEB MỚI SAU NÀY (bỏ dấu # để kích hoạt)
   # ==========================================================
   # - id: web-moi-auto

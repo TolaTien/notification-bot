@@ -5,6 +5,7 @@ import logging
 import re
 import xml.etree.ElementTree as ET
 from datetime import datetime
+from email.utils import parsedate_to_datetime
 from urllib.parse import urljoin, urlparse
 
 import requests
@@ -57,6 +58,7 @@ def _format_iso_date(raw_date: str) -> str:
     raw = (raw_date or "").strip()
     if not raw:
         return ""
+    # 1. ISO 8601
     try:
         iso = raw.replace("Z", "+00:00")
         dt = datetime.fromisoformat(iso)
@@ -64,7 +66,29 @@ def _format_iso_date(raw_date: str) -> str:
             dt = dt.astimezone(VN_TZ)
         return dt.strftime("%d/%m/%Y %H:%M")
     except ValueError:
-        return raw
+        pass
+    # 2. RFC 2822 (RSS pubDate like "Fri, 20 Nov 2026 16:16:06 +0000")
+    try:
+        dt = parsedate_to_datetime(raw)
+        if dt.tzinfo is not None:
+            dt = dt.astimezone(VN_TZ)
+        return dt.strftime("%d/%m/%Y %H:%M")
+    except (TypeError, ValueError):
+        pass
+    # 3. US format (e.g. "11/20/2026 6:16:00 PM" from chinhphu.vn RSS)
+    for fmt in ("%m/%d/%Y %I:%M:%S %p", "%m/%d/%Y %H:%M:%S", "%d/%m/%Y %H:%M:%S"):
+        try:
+            dt = datetime.strptime(raw, fmt)
+            return dt.strftime("%d/%m/%Y %H:%M")
+        except ValueError:
+            continue
+    return raw
+
+
+def _keyword_matches(kw: str, haystack: str) -> bool:
+    if len(kw) <= 4 and kw.isascii() and kw.isalnum():
+        return re.search(rf"\b{re.escape(kw)}\b", haystack) is not None
+    return kw in haystack
 
 
 def _passes_filters(article: Article, source: SourceConfig) -> bool:
@@ -79,9 +103,9 @@ def _passes_filters(article: Article, source: SourceConfig) -> bool:
         return False
 
     haystack = f"{article.title} {article.summary}".lower()
-    if source.keywords and not any(kw in haystack for kw in source.keywords):
+    if source.keywords and not any(_keyword_matches(kw, haystack) for kw in source.keywords):
         return False
-    if source.exclude_keywords and any(kw in haystack for kw in source.exclude_keywords):
+    if source.exclude_keywords and any(_keyword_matches(kw, haystack) for kw in source.exclude_keywords):
         return False
     return True
 
@@ -181,7 +205,9 @@ def _parse_rss_xml(xml_text: str, source: SourceConfig) -> list[Article]:
 def fetch_rss(source: SourceConfig, session: requests.Session) -> list[Article]:
     resp = session.get(source.url, timeout=REQUEST_TIMEOUT)
     resp.raise_for_status()
-    resp.encoding = resp.encoding or "utf-8"
+    # Many Vietnamese XML feeds serve Content-Type: text/xml without charset, causing requests to default to ISO-8859-1
+    if resp.encoding is None or resp.encoding.lower() in ("iso-8859-1", "latin-1", "ascii"):
+        resp.encoding = "utf-8"
     return _parse_rss_xml(resp.text, source)
 
 

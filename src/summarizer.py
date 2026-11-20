@@ -44,11 +44,11 @@ SYSTEM_INSTRUCTION = (
     "Quy tắc bắt buộc:\n"
     "- Trung thực tuyệt đối với nội dung bài gốc, KHÔNG bịa đặt hay suy diễn số liệu/ngày giờ.\n"
     "- Giữ chính xác mọi con số, ngày tháng, địa điểm, lệ phí, điều kiện, đối tượng áp dụng.\n"
-    "- Viết tiếng Việt tự nhiên, súc tích, dễ quét mắt.\n"
+    "- Viết hoàn toàn bằng tiếng Việt tự nhiên, súc tích, dễ quét mắt (nếu bài gốc bằng tiếng Anh thì tự dịch và tóm tắt mượt mà sang tiếng Việt).\n"
     "- Quy tắc chấm trường 'importance' (chỉ chọn 1 trong 3 giá trị chính xác):\n"
-    '  + "Cao": Thông báo ảnh hưởng trực tiếp tới lịch học, lịch thi, đăng ký môn, học phí, hạn chót, lịch nghỉ, quy định/thủ tục, văn bằng, học bổng, tuyển sinh.\n'
-    '  + "Trung bình": Cuộc thi học thuật, hội thảo hữu ích, cơ hội việc làm/thực tập, chương trình đào tạo/chứng chỉ mới đáng chú ý.\n'
-    '  + "Tham khảo": Tin PR, lễ kỷ niệm, gặp mặt tri ân, ký kết hợp tác, vinh danh đối tác/cá nhân, tin hoạt động truyền thông chung.\n'
+    '  + "Cao": Thông báo học vụ/thi cử (lịch thi, đăng ký môn, học phí, lịch nghỉ, văn bằng, học bổng, tuyển sinh); HOẶC tin chính sách/pháp luật tác động trực tiếp đến người dân (Luật Đất đai, mở bán/nộp hồ sơ/giá bán Nhà ở xã hội NOXH, quy định xử phạt/GPLX/luật giao thông mới, thay đổi lớn về lãi suất/thuế/tài chính vĩ mô, đột phá công nghệ/AI lớn thay đổi ngành).\n'
+    '  + "Trung bình": Cuộc thi, hội thảo hữu ích, phân tích thị trường đáng chú ý, sản phẩm/cập nhật công nghệ mới có giá trị thực tế.\n'
+    '  + "Tham khảo": Tin PR, lễ kỷ niệm, gặp mặt tri ân, ký kết hợp tác, vinh danh, tin giật tít/vụ việc nhỏ lẻ/đời sống không ảnh hưởng diện rộng.\n'
     "- Chỉ trả về đúng 1 JSON object hợp lệ (không thêm lời giải thích ngoài JSON) theo schema:\n"
     "{\n"
     '  "tldr": "Tóm tắt cốt lõi trong 1-2 câu ngắn gọn.",\n'

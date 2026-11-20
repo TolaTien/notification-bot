@@ -89,6 +89,30 @@ class TestNotificationBot(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0].url, "https://example.com/lich-thi")
 
+    def test_short_keyword_uses_word_boundary(self) -> None:
+        sample_rss = """<?xml version="1.0" encoding="UTF-8"?>
+        <rss version="2.0"><channel>
+          <item>
+            <title>Hướng dẫn cài đặt tài khoản mới</title>
+            <link>https://example.com/cai-dat</link>
+          </item>
+          <item>
+            <title>OpenAI ra mắt mô hình AI thế hệ mới</title>
+            <link>https://example.com/ai-news</link>
+          </item>
+        </channel></rss>
+        """
+        source = SourceConfig(
+            id="tech-test",
+            name="Tech Test",
+            url="https://example.com/feed",
+            type="rss",
+            keywords=["ai"],
+        )
+        items = _parse_rss_xml(sample_rss, source)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0].url, "https://example.com/ai-news")
+
     def test_content_extractor_extracts_body_and_pdf_attachments(self) -> None:
         html = """
         <html><body>
