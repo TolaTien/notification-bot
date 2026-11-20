@@ -55,7 +55,12 @@ def parse_args() -> argparse.Namespace:
         "--since-days",
         type=int,
         default=0,
-        help="Chỉ gửi email các bài chưa đọc được đăng trong N ngày gần đây nhất (vd: --since-days 5).",
+        help="Chỉ gửi email các bài được đăng trong N ngày gần đây nhất (vd: --since-days 30).",
+    )
+    parser.add_argument(
+        "--include-seen",
+        action="store_true",
+        help="Dùng kèm --since-days để gửi lại cả các bài đã lưu trong state/seen.json.",
     )
     parser.add_argument(
         "--no-ai",
@@ -136,6 +141,7 @@ def main() -> int:
                     dry_run=args.dry_run,
                     notify_initial=args.notify_initial,
                     since_days=args.since_days,
+                    include_seen=args.include_seen,
                     enable_ai=not args.no_ai,
                 )
             except Exception as exc:
@@ -148,6 +154,7 @@ def main() -> int:
         dry_run=args.dry_run,
         notify_initial=args.notify_initial,
         since_days=args.since_days,
+        include_seen=args.include_seen,
         enable_ai=not args.no_ai,
     )
     if summary.sources_checked > 0 and summary.sources_failed == summary.sources_checked:

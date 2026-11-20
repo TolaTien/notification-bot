@@ -4,6 +4,7 @@ import json
 import logging
 import os
 import re
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 
@@ -240,21 +241,40 @@ class AISummarizer:
             return None
 
         prompt = _build_user_prompt(article, body_text)
-        try:
-            if self.config.provider == "gemini":
-                raw = self._call_gemini(prompt, sess)
-            else:
-                raw = self._call_openai_compatible(prompt, sess)
-            summary = parse_ai_json(raw)
-            article.ai_summary = summary
-            return summary
-        except Exception as exc:
-            logger.warning(
-                "[AI] Lỗi khi tóm tắt bài '%s' (sẽ fallback về tóm tắt gốc): %s",
-                article.title[:60],
-                exc,
-            )
-            return None
+        for attempt in range(3):
+            try:
+                if self.config.provider == "gemini":
+                    raw = self._call_gemini(prompt, sess)
+                else:
+                    raw = self._call_openai_compatible(prompt, sess)
+                summary = parse_ai_json(raw)
+                article.ai_summary = summary
+                return summary
+            except requests.HTTPError as exc:
+                status = exc.response.status_code if exc.response is not None else 0
+                if status == 429 and attempt < 2:
+                    wait_sec = 12 * (attempt + 1)
+                    logger.info(
+                        "[AI] Chạm giới hạn tốc độ (429), đợi %ds rồi thử lại bài '%s'...",
+                        wait_sec,
+                        article.title[:50],
+                    )
+                    time.sleep(wait_sec)
+                    continue
+                logger.warning(
+                    "[AI] Lỗi khi tóm tắt bài '%s' (sẽ fallback về tóm tắt gốc): %s",
+                    article.title[:60],
+                    exc,
+                )
+                return None
+            except Exception as exc:
+                logger.warning(
+                    "[AI] Lỗi khi tóm tắt bài '%s' (sẽ fallback về tóm tắt gốc): %s",
+                    article.title[:60],
+                    exc,
+                )
+                return None
+        return None
 
 
 def enrich_articles_with_ai(
@@ -281,7 +301,8 @@ def enrich_articles_with_ai(
     )
 
     summarized_count = 0
-    with ThreadPoolExecutor(max_workers=min(max_workers, len(articles))) as pool:
+    workers = min(2 if len(articles) > 6 else max_workers, len(articles))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
         futures = {
             pool.submit(
                 ai.summarize_article,

@@ -50,6 +50,7 @@ def run_once(
     dry_run: bool = False,
     notify_initial: bool = False,
     since_days: int = 0,
+    include_seen: bool = False,
     enable_ai: bool = True,
     max_workers: int = 6,
 ) -> RunSummary:
@@ -129,10 +130,12 @@ def run_once(
                 continue
             seen_this_run.add(canon)
 
-            if state.is_seen(article):
+            already_seen = state.is_seen(article)
+            if already_seen and not (include_seen and cutoff_dt is not None):
                 continue
 
-            to_mark_seen.append(article)
+            if not already_seen:
+                to_mark_seen.append(article)
             if cutoff_dt is not None:
                 pub_dt = parse_published_datetime(article.published_at)
                 if pub_dt is not None and pub_dt >= cutoff_dt:

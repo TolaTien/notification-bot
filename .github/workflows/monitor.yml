@@ -10,7 +10,7 @@ on:
         required: false
         default: "false"
       since_days:
-        description: "Gửi các tin chưa đọc trong N ngày gần đây (để 0 nếu chạy bình thường)"
+        description: "Tổng hợp & gửi lại các tin trong N ngày gần đây (vd: 30; để 0 nếu chạy bình thường)"
         required: false
         default: "0"
 
@@ -24,7 +24,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
@@ -56,7 +56,7 @@ jobs:
           if [ "${{ github.event.inputs.test_email }}" = "true" ]; then
             python main.py --test-email
           elif [ -n "${{ github.event.inputs.since_days }}" ] && [ "${{ github.event.inputs.since_days }}" != "0" ]; then
-            python main.py --since-days "${{ github.event.inputs.since_days }}"
+            python main.py --since-days "${{ github.event.inputs.since_days }}" --include-seen
           else
             python main.py
           fi

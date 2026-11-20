@@ -283,6 +283,44 @@ class TestNotificationBot(unittest.TestCase):
         self.assertEqual((dt.year, dt.month, dt.day), (2026, 11, 20))
         self.assertIsNone(parse_published_datetime("invalid"))
 
+    def test_since_days_with_include_seen_resends_recent_seen_articles(self) -> None:
+        from datetime import datetime
+        from src.models import VN_TZ
+
+        today_str = datetime.now(VN_TZ).strftime("%d/%m/%Y %H:%M")
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            cfg_path = tmp_path / "sites.yaml"
+            state_path = tmp_path / "seen.json"
+            cfg_path.write_text(
+                "sources:\n"
+                "  - id: s1\n"
+                "    name: Source 1\n"
+                "    url: https://a.test\n"
+                "    type: html\n",
+                encoding="utf-8",
+            )
+            state_path.write_text(
+                json.dumps(
+                    {
+                        "initialized_sources": ["s1"],
+                        "seen": {"https://a.test/recent": {"source_id": "s1", "title": "Recent"}},
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            art_recent = Article("s1", "Source 1", "Tin hôm nay", "https://a.test/recent", published_at=today_str)
+            art_ancient = Article("s1", "Source 1", "Tin rất cũ", "https://a.test/ancient", published_at="01/01/2020 08:00")
+
+            with (
+                patch("src.runner.fetch_source", return_value=[art_recent, art_ancient]),
+                patch("src.runner.send_articles_email") as mock_send,
+            ):
+                res = run_once(cfg_path, state_path, since_days=30, include_seen=True, enable_ai=False)
+                self.assertEqual([a.url for a in res.new_articles], ["https://a.test/recent"])
+                mock_send.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()
