@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from src.models import Article
 from src.notifier import build_email_bodies, send_test_email
 from src.runner import run_once
-from src.summarizer import AISummarizer
+from src.summarizer import AISummarizer, list_gemini_models
 
 
 def configure_logging(verbose: bool = False) -> None:
@@ -79,6 +79,11 @@ def parse_args() -> argparse.Namespace:
         help="Gửi 1 email kiểm tra cấu hình SMTP rồi thoát.",
     )
     parser.add_argument(
+        "--list-models",
+        action="store_true",
+        help="Liệt kê toàn bộ mã model khả dụng trong GEMINI_API_KEY hiện tại.",
+    )
+    parser.add_argument(
         "--loop",
         action="store_true",
         help="Chạy lặp liên tục trên máy cá nhân / VPS thay vì thoát sau 1 lần.",
@@ -106,6 +111,11 @@ def main() -> int:
     if args.test_email:
         send_test_email()
         logger.info("Đã gửi email kiểm tra thành công!")
+        return 0
+
+    if args.list_models:
+        for model_id, display in list_gemini_models():
+            print(f"{model_id:<45} | {display}")
         return 0
 
     if args.preview_summary:

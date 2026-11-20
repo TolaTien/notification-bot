@@ -20,10 +20,19 @@ logger = logging.getLogger(__name__)
 AI_TIMEOUT = 35
 
 DEFAULT_GEMINI_MODELS = [
+    # Tier 1: Model chất lượng cao nhất (mỗi model 20 RPD, 250K TPM)
+    "gemini-3.8-flash",
+    "gemini-4-hydrogen",
+    "gemini-3.6-flash",
+    "gemini-3-flash-preview",
     "gemini-2.5-flash",
+    # Tier 2: Flash Lite quota rất lớn (500 RPD/model, 15 RPM, 250K TPM)
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
     "gemini-2.5-flash-lite",
-    "gemini-2.0-flash",
-    "gemini-2.0-flash-lite",
+    # Tier 3: Gemma 4 dự phòng gần như vô hạn (14.4K RPD/model, 30 RPM)
+    "gemma-4-31b-it",
+    "gemma-4-26b-a4b-it",
 ]
 
 FAILOVER_STATUS_CODES = {400, 404, 429, 500, 502, 503, 504}
@@ -63,6 +72,27 @@ def _dedupe_keep_order(items: list[str]) -> list[str]:
             seen.add(item)
             result.append(item)
     return result
+
+
+def list_gemini_models(api_key: str | None = None) -> list[tuple[str, str]]:
+    """Fetch exact generateContent-capable model IDs from Google Gemini API."""
+    key = (api_key or os.getenv("GEMINI_API_KEY") or "").strip()
+    if not key:
+        raise RuntimeError("Thiếu GEMINI_API_KEY trong .env hoặc biến môi trường.")
+    sess = build_http_session()
+    resp = sess.get(
+        "https://generativelanguage.googleapis.com/v1beta/models",
+        params={"key": key, "pageSize": 200},
+        timeout=20,
+    )
+    resp.raise_for_status()
+    results: list[tuple[str, str]] = []
+    for m in resp.json().get("models", []):
+        if "generateContent" in (m.get("supportedGenerationMethods") or []):
+            model_id = str(m.get("name") or "").replace("models/", "")
+            display = str(m.get("displayName") or "")
+            results.append((model_id, display))
+    return results
 
 
 def _build_user_prompt(article: Article, body_text: str) -> str:
@@ -261,14 +291,23 @@ class AISummarizer:
 
     def _call_gemini(self, target: ModelTarget, prompt: str, session: requests.Session) -> str:
         url = f"{target.base_url.rstrip('/')}/models/{target.model}:generateContent"
-        payload = {
-            "system_instruction": {"parts": [{"text": SYSTEM_INSTRUCTION}]},
-            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-            "generationConfig": {
-                "temperature": 0.2,
-                "responseMimeType": "application/json",
-            },
-        }
+        is_gemma = target.model.lower().startswith("gemma")
+        if is_gemma:
+            # Gemma models on Gemini API work most reliably with inline instructions and without responseMimeType
+            combined = f"{SYSTEM_INSTRUCTION}\n\n{prompt[:9000]}"
+            payload = {
+                "contents": [{"role": "user", "parts": [{"text": combined}]}],
+                "generationConfig": {"temperature": 0.2},
+            }
+        else:
+            payload = {
+                "system_instruction": {"parts": [{"text": SYSTEM_INSTRUCTION}]},
+                "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+                "generationConfig": {
+                    "temperature": 0.2,
+                    "responseMimeType": "application/json",
+                },
+            }
         resp = session.post(
             url,
             params={"key": target.api_key},

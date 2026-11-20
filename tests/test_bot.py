@@ -203,6 +203,47 @@ class TestNotificationBot(unittest.TestCase):
         self.assertEqual(len(called_urls), 3)
         self.assertIn("gemini-2.5-flash-lite:", called_urls[2])
 
+    def test_gemma_model_omits_system_instruction_and_json_mime_type(self) -> None:
+        art = Article("ptit", "PTIT", "Bài Gemma", "https://ptit.edu.vn/g", full_content="Nội dung bài viết kiểm tra gọi Gemma 4 trên Gemini API.")
+        cfg = AIConfig(
+            provider="gemini",
+            api_key="fake-key",
+            model="gemma-4-31b-it",
+            targets=[
+                ModelTarget("gemini", "fake-key", "gemma-4-31b-it", "https://generativelanguage.googleapis.com/v1beta"),
+            ],
+        )
+        summarizer = AISummarizer(cfg)
+        captured_payloads: list[dict] = []
+
+        def fake_post(url, **kwargs):
+            captured_payloads.append(kwargs["json"])
+            resp = MagicMock()
+            resp.status_code = 200
+            resp.raise_for_status.return_value = None
+            resp.json.return_value = {
+                "candidates": [
+                    {
+                        "content": {
+                            "parts": [
+                                {
+                                    "text": '```json\n{"tldr":"OK Gemma","key_points":["1"],"deadlines":[],"action_required":"","importance":"Trung bình"}\n```'
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+            return resp
+
+        fake_session = MagicMock()
+        fake_session.post.side_effect = fake_post
+        res = summarizer.summarize_article(art, session=fake_session, retry_sleep_seconds=0)
+        self.assertIsNotNone(res)
+        self.assertEqual(res.tldr, "OK Gemma")
+        self.assertNotIn("system_instruction", captured_payloads[0])
+        self.assertNotIn("responseMimeType", captured_payloads[0]["generationConfig"])
+
     def test_first_run_seeds_without_spam_then_notifies_new_post(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
