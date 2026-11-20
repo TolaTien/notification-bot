@@ -1,10 +1,8 @@
 name: News Monitor Bot
 
 on:
-  schedule:
-    # Tự động quét mỗi 5 phút 24/7
-    - cron: "*/5 * * * *"
-  # Cho phép bấm nút "Run workflow" thủ công trên GitHub để test ngay
+  # Kích hoạt định kỳ mỗi 5 phút qua cron-job.org (gọi workflow_dispatch API)
+  # hoặc bấm nút "Run workflow" thủ công trên GitHub
   workflow_dispatch:
     inputs:
       test_email:
