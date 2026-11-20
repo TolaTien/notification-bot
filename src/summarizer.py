@@ -4,9 +4,10 @@ import json
 import logging
 import os
 import re
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import requests
 
@@ -17,6 +18,15 @@ from src.models import AISummary, Article
 logger = logging.getLogger(__name__)
 
 AI_TIMEOUT = 35
+
+DEFAULT_GEMINI_MODELS = [
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-2.0-flash",
+    "gemini-2.0-flash-lite",
+]
+
+FAILOVER_STATUS_CODES = {400, 404, 429, 500, 502, 503, 504}
 
 SYSTEM_INSTRUCTION = (
     "Bạn là trợ lý biên tập tin tức thông minh bằng tiếng Việt. "
@@ -41,6 +51,20 @@ SYSTEM_INSTRUCTION = (
 )
 
 
+def _split_models(raw: str) -> list[str]:
+    return [m.strip() for m in (raw or "").split(",") if m.strip()]
+
+
+def _dedupe_keep_order(items: list[str]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for item in items:
+        if item and item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+
+
 def _build_user_prompt(article: Article, body_text: str) -> str:
     parts = [
         f"Nguồn: {article.source_name}",
@@ -57,7 +81,6 @@ def _build_user_prompt(article: Article, body_text: str) -> str:
 
 def parse_ai_json(raw_text: str) -> AISummary:
     cleaned = (raw_text or "").strip()
-    # Strip optional markdown code fences like ```json ... ```
     fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", cleaned, re.S)
     if fence_match:
         cleaned = fence_match.group(1)
@@ -96,65 +119,127 @@ def parse_ai_json(raw_text: str) -> AISummary:
 
 
 @dataclass(slots=True)
-class AIConfig:
+class ModelTarget:
     provider: str  # "gemini" or "openai"
     api_key: str
     model: str
+    base_url: str
+
+    @property
+    def label(self) -> str:
+        return f"{self.provider}/{self.model}"
+
+
+@dataclass(slots=True)
+class AIConfig:
+    provider: str  # primary provider label
+    api_key: str
+    model: str  # primary model label
     base_url: str = ""
+    targets: list[ModelTarget] = field(default_factory=list)
+
+    def __post_init__(self) -> None:
+        if not self.targets and self.api_key and self.model:
+            default_base = (
+                "https://generativelanguage.googleapis.com/v1beta"
+                if self.provider == "gemini"
+                else "https://api.openai.com/v1"
+            )
+            self.targets = [
+                ModelTarget(
+                    provider=self.provider,
+                    api_key=self.api_key,
+                    model=self.model,
+                    base_url=(self.base_url or default_base).rstrip("/"),
+                )
+            ]
 
     @classmethod
     def from_env(cls) -> "AIConfig | None":
         provider = (os.getenv("AI_PROVIDER") or "").strip().lower()
         gemini_key = (os.getenv("GEMINI_API_KEY") or "").strip()
         generic_key = (os.getenv("AI_API_KEY") or "").strip()
-        model = (os.getenv("AI_MODEL") or "").strip()
+        raw_models = _split_models(os.getenv("AI_MODELS") or "")
+        raw_single_model = _split_models(os.getenv("AI_MODEL") or "")
         base_url = (os.getenv("AI_BASE_URL") or "").strip()
 
-        if not provider:
-            if gemini_key:
-                provider = "gemini"
-            elif generic_key:
-                provider = "openai"
+        targets: list[ModelTarget] = []
+
+        # 1. Gemini targets (default multi-model fallback chain!)
+        if gemini_key and provider in ("", "gemini"):
+            gemini_base = (
+                base_url
+                if provider == "gemini" and base_url
+                else "https://generativelanguage.googleapis.com/v1beta"
+            ).rstrip("/")
+            if raw_models:
+                gemini_models = _dedupe_keep_order(raw_models)
             else:
-                return None
+                gemini_models = _dedupe_keep_order(raw_single_model + DEFAULT_GEMINI_MODELS)
+            for m in gemini_models:
+                targets.append(
+                    ModelTarget(
+                        provider="gemini",
+                        api_key=gemini_key,
+                        model=m,
+                        base_url=gemini_base,
+                    )
+                )
 
-        if provider == "gemini":
-            key = gemini_key or generic_key
-            if not key:
-                return None
-            return cls(
-                provider="gemini",
-                api_key=key,
-                model=model or "gemini-2.5-flash",
-                base_url=base_url or "https://generativelanguage.googleapis.com/v1beta",
-            )
+        # 2. OpenAI-compatible targets (primary if no Gemini, or secondary backup if both keys exist!)
+        openai_providers = {
+            "openai": ("https://api.openai.com/v1", ["gpt-4o-mini"]),
+            "groq": (
+                "https://api.groq.com/openai/v1",
+                ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"],
+            ),
+            "openrouter": (
+                "https://openrouter.ai/api/v1",
+                ["google/gemini-2.5-flash", "google/gemini-2.0-flash-001"],
+            ),
+            "deepseek": ("https://api.deepseek.com/v1", ["deepseek-chat"]),
+            "openai_compatible": ("https://api.openai.com/v1", ["gpt-4o-mini"]),
+        }
 
-        if provider in ("openai", "groq", "openrouter", "deepseek", "openai_compatible"):
-            key = generic_key or gemini_key
-            if not key:
-                return None
-            default_urls = {
-                "openai": ("https://api.openai.com/v1", "gpt-4o-mini"),
-                "groq": ("https://api.groq.com/openai/v1", "llama-3.3-70b-versatile"),
-                "openrouter": ("https://openrouter.ai/api/v1", "google/gemini-2.0-flash-001"),
-                "deepseek": ("https://api.deepseek.com/v1", "deepseek-chat"),
-                "openai_compatible": ("https://api.openai.com/v1", "gpt-4o-mini"),
-            }
-            def_url, def_model = default_urls[provider]
-            return cls(
-                provider="openai",
-                api_key=key,
-                model=model or def_model,
-                base_url=(base_url or def_url).rstrip("/"),
-            )
+        if generic_key:
+            eff_provider = provider if provider in openai_providers else "openai"
+            def_url, def_models = openai_providers[eff_provider]
+            oa_base = (base_url or def_url).rstrip("/")
+            if not targets:
+                oa_models = _dedupe_keep_order(raw_models or raw_single_model or def_models)
+            else:
+                # Secondary backup provider behind Gemini
+                oa_models = _dedupe_keep_order(def_models)
+            for m in oa_models:
+                targets.append(
+                    ModelTarget(
+                        provider="openai",
+                        api_key=generic_key,
+                        model=m,
+                        base_url=oa_base,
+                    )
+                )
 
-        logger.warning("AI_PROVIDER '%s' không được hỗ trợ; tắt tóm tắt AI.", provider)
-        return None
+        if not targets:
+            if provider and provider not in ("gemini", *openai_providers):
+                logger.warning("AI_PROVIDER '%s' không được hỗ trợ; tắt tóm tắt AI.", provider)
+            return None
+
+        primary = targets[0]
+        return cls(
+            provider=primary.provider,
+            api_key=primary.api_key,
+            model=primary.model,
+            base_url=primary.base_url,
+            targets=targets,
+        )
 
 
 class AISummarizer:
     def __init__(self, config: AIConfig) -> None:
         self.config = config
+        self._lock = threading.Lock()
+        self._exhausted_targets: set[str] = set()
 
     @classmethod
     def from_env(cls) -> "AISummarizer | None":
@@ -163,11 +248,19 @@ class AISummarizer:
             return None
         return cls(cfg)
 
-    def _call_gemini(self, prompt: str, session: requests.Session) -> str:
-        url = (
-            f"{self.config.base_url.rstrip('/')}/models/"
-            f"{self.config.model}:generateContent"
-        )
+    def _ordered_targets(self) -> list[ModelTarget]:
+        """Return active targets first, keeping exhausted targets only as last resort."""
+        with self._lock:
+            active = [t for t in self.config.targets if t.label not in self._exhausted_targets]
+            exhausted = [t for t in self.config.targets if t.label in self._exhausted_targets]
+        return active + exhausted
+
+    def _mark_exhausted(self, target: ModelTarget) -> None:
+        with self._lock:
+            self._exhausted_targets.add(target.label)
+
+    def _call_gemini(self, target: ModelTarget, prompt: str, session: requests.Session) -> str:
+        url = f"{target.base_url.rstrip('/')}/models/{target.model}:generateContent"
         payload = {
             "system_instruction": {"parts": [{"text": SYSTEM_INSTRUCTION}]},
             "contents": [{"role": "user", "parts": [{"text": prompt}]}],
@@ -178,7 +271,7 @@ class AISummarizer:
         }
         resp = session.post(
             url,
-            params={"key": self.config.api_key},
+            params={"key": target.api_key},
             json=payload,
             timeout=AI_TIMEOUT,
         )
@@ -186,18 +279,20 @@ class AISummarizer:
         data = resp.json()
         candidates = data.get("candidates") or []
         if not candidates:
-            raise RuntimeError(f"Gemini không trả về kết quả: {data}")
+            raise RuntimeError(f"Gemini ({target.model}) không trả về kết quả: {data}")
         parts = (candidates[0].get("content") or {}).get("parts") or []
         return "".join(str(p.get("text") or "") for p in parts)
 
-    def _call_openai_compatible(self, prompt: str, session: requests.Session) -> str:
-        url = f"{self.config.base_url.rstrip('/')}/chat/completions"
+    def _call_openai_compatible(
+        self, target: ModelTarget, prompt: str, session: requests.Session
+    ) -> str:
+        url = f"{target.base_url.rstrip('/')}/chat/completions"
         headers = {
-            "Authorization": f"Bearer {self.config.api_key}",
+            "Authorization": f"Bearer {target.api_key}",
             "Content-Type": "application/json",
         }
         payload = {
-            "model": self.config.model,
+            "model": target.model,
             "temperature": 0.2,
             "response_format": {"type": "json_object"},
             "messages": [
@@ -210,14 +305,20 @@ class AISummarizer:
         data = resp.json()
         choices = data.get("choices") or []
         if not choices:
-            raise RuntimeError(f"AI API không trả về kết quả: {data}")
+            raise RuntimeError(f"AI API ({target.model}) không trả về kết quả: {data}")
         return str((choices[0].get("message") or {}).get("content") or "")
+
+    def _call_target(self, target: ModelTarget, prompt: str, session: requests.Session) -> str:
+        if target.provider == "gemini":
+            return self._call_gemini(target, prompt, session)
+        return self._call_openai_compatible(target, prompt, session)
 
     def summarize_article(
         self,
         article: Article,
         session: requests.Session | None = None,
         content_selector: str = "",
+        retry_sleep_seconds: float = 10.0,
     ) -> AISummary | None:
         sess = session or build_http_session()
 
@@ -241,39 +342,71 @@ class AISummarizer:
             return None
 
         prompt = _build_user_prompt(article, body_text)
-        for attempt in range(3):
-            try:
-                if self.config.provider == "gemini":
-                    raw = self._call_gemini(prompt, sess)
-                else:
-                    raw = self._call_openai_compatible(prompt, sess)
-                summary = parse_ai_json(raw)
-                article.ai_summary = summary
-                return summary
-            except requests.HTTPError as exc:
-                status = exc.response.status_code if exc.response is not None else 0
-                if status == 429 and attempt < 2:
-                    wait_sec = 12 * (attempt + 1)
-                    logger.info(
-                        "[AI] Chạm giới hạn tốc độ (429), đợi %ds rồi thử lại bài '%s'...",
-                        wait_sec,
-                        article.title[:50],
+
+        # Pass 1: walk through all models in fallback order; if all hit 429, wait once and retry
+        for round_idx in range(2):
+            targets = self._ordered_targets()
+            saw_rate_limit = False
+
+            for idx, target in enumerate(targets):
+                try:
+                    raw = self._call_target(target, prompt, sess)
+                    summary = parse_ai_json(raw)
+                    article.ai_summary = summary
+                    if target.label != self.config.targets[0].label:
+                        logger.info(
+                            "[AI] Đã tóm tắt bằng model dự phòng '%s': %s",
+                            target.label,
+                            article.title[:60],
+                        )
+                    return summary
+                except requests.HTTPError as exc:
+                    status = exc.response.status_code if exc.response is not None else 0
+                    if status == 429:
+                        saw_rate_limit = True
+                    if status in FAILOVER_STATUS_CODES:
+                        self._mark_exhausted(target)
+                        next_label = targets[idx + 1].label if idx + 1 < len(targets) else "không còn model nào"
+                        logger.warning(
+                            "[AI] Model '%s' lỗi/hết quota (HTTP %d) → chuyển sang '%s'...",
+                            target.label,
+                            status,
+                            next_label,
+                        )
+                        continue
+                    logger.warning(
+                        "[AI] Lỗi HTTP %d từ '%s' khi tóm tắt '%s': %s",
+                        status,
+                        target.label,
+                        article.title[:60],
+                        exc,
                     )
-                    time.sleep(wait_sec)
+                    return None
+                except Exception as exc:
+                    next_label = targets[idx + 1].label if idx + 1 < len(targets) else "fallback gốc"
+                    logger.warning(
+                        "[AI] Model '%s' gặp lỗi (%s) → chuyển sang '%s'...",
+                        target.label,
+                        exc,
+                        next_label,
+                    )
                     continue
-                logger.warning(
-                    "[AI] Lỗi khi tóm tắt bài '%s' (sẽ fallback về tóm tắt gốc): %s",
-                    article.title[:60],
-                    exc,
+
+            if saw_rate_limit and round_idx == 0 and retry_sleep_seconds > 0:
+                logger.info(
+                    "[AI] Tất cả model đều đang chạm giới hạn tốc độ (429), đợi %.0fs rồi thử lại 1 lượt...",
+                    retry_sleep_seconds,
                 )
-                return None
-            except Exception as exc:
-                logger.warning(
-                    "[AI] Lỗi khi tóm tắt bài '%s' (sẽ fallback về tóm tắt gốc): %s",
-                    article.title[:60],
-                    exc,
-                )
-                return None
+                time.sleep(retry_sleep_seconds)
+                with self._lock:
+                    self._exhausted_targets.clear()
+                continue
+            break
+
+        logger.warning(
+            "[AI] Không model nào tóm tắt được bài '%s' (sẽ gửi bằng tóm tắt gốc).",
+            article.title[:60],
+        )
         return None
 
 
@@ -293,10 +426,10 @@ def enrich_articles_with_ai(
         return 0
 
     selectors = content_selectors_by_source or {}
+    chain_preview = " -> ".join(t.model for t in ai.config.targets)
     logger.info(
-        "Đang dùng AI (%s / %s) đọc & tóm tắt %d bài viết mới...",
-        ai.config.provider,
-        ai.config.model,
+        "Đang dùng AI [%s] đọc & tóm tắt %d bài viết mới...",
+        chain_preview,
         len(articles),
     )
 

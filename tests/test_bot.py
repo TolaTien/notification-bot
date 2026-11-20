@@ -19,7 +19,7 @@ from src.models import (
 from src.notifier import build_email_bodies, build_email_subject
 from src.runner import run_once
 from src.state import StateStore
-from src.summarizer import AIConfig, AISummarizer, parse_ai_json
+from src.summarizer import AIConfig, AISummarizer, ModelTarget, parse_ai_json
 
 
 class TestNotificationBot(unittest.TestCase):
@@ -130,9 +130,78 @@ class TestNotificationBot(unittest.TestCase):
         fake_session = MagicMock()
         fake_session.post.side_effect = RuntimeError("Network error")
 
-        result = summarizer.summarize_article(art, session=fake_session)
+        result = summarizer.summarize_article(art, session=fake_session, retry_sleep_seconds=0)
         self.assertIsNone(result)
         self.assertIsNone(art.ai_summary)
+
+    def test_ai_model_automatic_failover_on_429_quota_limit(self) -> None:
+        import requests
+
+        art1 = Article("ptit", "PTIT", "Bài 1", "https://ptit.edu.vn/1", full_content="Nội dung bài viết số 1 đủ dài để AI phân tích và tóm tắt.")
+        art2 = Article("ptit", "PTIT", "Bài 2", "https://ptit.edu.vn/2", full_content="Nội dung bài viết số 2 đủ dài để AI phân tích và tóm tắt.")
+
+        cfg = AIConfig(
+            provider="gemini",
+            api_key="fake-key",
+            model="gemini-2.5-flash",
+            targets=[
+                ModelTarget("gemini", "fake-key", "gemini-2.5-flash", "https://generativelanguage.googleapis.com/v1beta"),
+                ModelTarget("gemini", "fake-key", "gemini-2.5-flash-lite", "https://generativelanguage.googleapis.com/v1beta"),
+            ],
+        )
+        summarizer = AISummarizer(cfg)
+
+        called_urls: list[str] = []
+
+        def fake_post(url, **_kwargs):
+            called_urls.append(url)
+            resp = MagicMock()
+            if "gemini-2.5-flash:" in url:
+                resp.status_code = 429
+                err = requests.HTTPError("429 Too Many Requests", response=resp)
+                resp.raise_for_status.side_effect = err
+                return resp
+            resp.status_code = 200
+            resp.raise_for_status.return_value = None
+            resp.json.return_value = {
+                "candidates": [
+                    {
+                        "content": {
+                            "parts": [
+                                {
+                                    "text": json.dumps(
+                                        {
+                                            "tldr": "Tóm tắt thành công bằng model dự phòng.",
+                                            "key_points": ["Ý 1"],
+                                            "deadlines": [],
+                                            "action_required": "",
+                                            "importance": "Cao",
+                                        }
+                                    )
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+            return resp
+
+        fake_session = MagicMock()
+        fake_session.post.side_effect = fake_post
+
+        # Article 1: primary hits 429 -> automatically fails over to flash-lite
+        res1 = summarizer.summarize_article(art1, session=fake_session, retry_sleep_seconds=0)
+        self.assertIsNotNone(res1)
+        self.assertEqual(res1.tldr, "Tóm tắt thành công bằng model dự phòng.")
+        self.assertEqual(len(called_urls), 2)
+        self.assertIn("gemini-2.5-flash:", called_urls[0])
+        self.assertIn("gemini-2.5-flash-lite:", called_urls[1])
+
+        # Article 2: primary is marked exhausted, so it goes STRAIGHT to flash-lite (1 call only!)
+        res2 = summarizer.summarize_article(art2, session=fake_session, retry_sleep_seconds=0)
+        self.assertIsNotNone(res2)
+        self.assertEqual(len(called_urls), 3)
+        self.assertIn("gemini-2.5-flash-lite:", called_urls[2])
 
     def test_first_run_seeds_without_spam_then_notifies_new_post(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

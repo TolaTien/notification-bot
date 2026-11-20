@@ -51,6 +51,7 @@ jobs:
           AI_PROVIDER: ${{ secrets.AI_PROVIDER }}
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_MODEL: ${{ secrets.AI_MODEL }}
+          AI_MODELS: ${{ secrets.AI_MODELS }}
           AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
         run: |
           if [ "${{ github.event.inputs.test_email }}" = "true" ]; then
