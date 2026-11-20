@@ -25,6 +25,10 @@ SYSTEM_INSTRUCTION = (
     "- Trung thực tuyệt đối với nội dung bài gốc, KHÔNG bịa đặt hay suy diễn số liệu/ngày giờ.\n"
     "- Giữ chính xác mọi con số, ngày tháng, địa điểm, lệ phí, điều kiện, đối tượng áp dụng.\n"
     "- Viết tiếng Việt tự nhiên, súc tích, dễ quét mắt.\n"
+    "- Quy tắc chấm trường 'importance' (chỉ chọn 1 trong 3 giá trị chính xác):\n"
+    '  + "Cao": Thông báo ảnh hưởng trực tiếp tới lịch học, lịch thi, đăng ký môn, học phí, hạn chót, lịch nghỉ, quy định/thủ tục, văn bằng, học bổng, tuyển sinh.\n'
+    '  + "Trung bình": Cuộc thi học thuật, hội thảo hữu ích, cơ hội việc làm/thực tập, chương trình đào tạo/chứng chỉ mới đáng chú ý.\n'
+    '  + "Tham khảo": Tin PR, lễ kỷ niệm, gặp mặt tri ân, ký kết hợp tác, vinh danh đối tác/cá nhân, tin hoạt động truyền thông chung.\n'
     "- Chỉ trả về đúng 1 JSON object hợp lệ (không thêm lời giải thích ngoài JSON) theo schema:\n"
     "{\n"
     '  "tldr": "Tóm tắt cốt lõi trong 1-2 câu ngắn gọn.",\n'

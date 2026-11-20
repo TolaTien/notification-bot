@@ -50,6 +50,22 @@ class AISummary:
     importance: str = "Trung bình"
 
 
+IMPORTANCE_LEVELS: dict[str, int] = {
+    "tham khảo": 1,
+    "trung bình": 2,
+    "cao": 3,
+}
+
+
+def meets_min_importance(actual: str, minimum: str) -> bool:
+    """Return True if `actual` importance is >= `minimum` threshold."""
+    min_key = (minimum or "").strip().lower()
+    if not min_key or min_key not in IMPORTANCE_LEVELS:
+        return True
+    actual_key = (actual or "").strip().lower()
+    return IMPORTANCE_LEVELS.get(actual_key, 2) >= IMPORTANCE_LEVELS[min_key]
+
+
 @dataclass(slots=True)
 class Article:
     source_id: str
@@ -92,6 +108,7 @@ class SourceConfig:
     # shared filtering options
     keywords: list[str] = field(default_factory=list)
     exclude_keywords: list[str] = field(default_factory=list)
+    min_importance: str = ""
 
     @classmethod
     def from_dict(cls, raw: dict[str, Any]) -> "SourceConfig":
@@ -114,4 +131,5 @@ class SourceConfig:
             exclude_patterns=[str(p) for p in raw.get("exclude_patterns", [])],
             keywords=[str(k).lower() for k in raw.get("keywords", [])],
             exclude_keywords=[str(k).lower() for k in raw.get("exclude_keywords", [])],
+            min_importance=str(raw.get("min_importance", "")).strip(),
         )

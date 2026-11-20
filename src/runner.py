@@ -8,7 +8,7 @@ from pathlib import Path
 import yaml
 
 from src.fetchers import build_http_session, fetch_source
-from src.models import Article, SourceConfig
+from src.models import Article, SourceConfig, meets_min_importance
 from src.notifier import send_articles_email
 from src.state import StateStore
 from src.summarizer import enrich_articles_with_ai
@@ -23,6 +23,7 @@ class RunSummary:
     sources_initialized: int = 0
     total_fetched: int = 0
     ai_summarized: int = 0
+    filtered_out_by_ai: int = 0
     new_articles: list[Article] = field(default_factory=list)
     errors: dict[str, str] = field(default_factory=dict)
 
@@ -131,10 +132,34 @@ def run_once(
             to_notify, content_selectors_by_source=content_selectors
         )
 
-    # Send email BEFORE persisting state so failed email attempts are retried on the next run
-    if to_notify:
-        send_articles_email(to_notify)
+    # Apply per-source AI importance threshold (e.g., skip "Tham khảo" PR posts on general news feeds)
+    # Note: if AI summary is unavailable (no API key or transient error), we keep the article so nothing is missed.
+    min_importance_by_source = {s.id: s.min_importance for s in sources if s.min_importance}
+    articles_to_email: list[Article] = []
+    for art in to_notify:
+        threshold = min_importance_by_source.get(art.source_id, "")
+        if threshold and art.ai_summary is not None:
+            if not meets_min_importance(art.ai_summary.importance, threshold):
+                summary.filtered_out_by_ai += 1
+                logger.info(
+                    "[AI-FILTER] Bỏ qua bài mức '%s' (yêu cầu >= '%s'): [%s] %s",
+                    art.ai_summary.importance,
+                    threshold,
+                    art.source_name,
+                    art.title,
+                )
+                continue
+        articles_to_email.append(art)
 
+    summary.new_articles = articles_to_email
+
+    # Send email BEFORE persisting state so failed email attempts are retried on the next run
+    if articles_to_email:
+        send_articles_email(articles_to_email)
+    elif to_notify:
+        logger.info("Tất cả %d bài mới đều bị bộ lọc AI (min_importance) ẩn đi — không gửi email.", len(to_notify))
+
+    # Mark all fetched articles (including AI-filtered ones) as seen so we don't re-call AI next run
     for source_id in sources_to_init:
         state.mark_source_initialized(source_id)
     for article in to_mark_seen:
