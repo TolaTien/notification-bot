@@ -1,0 +1,88 @@
+# Danh sách các trang web cần theo dõi tin tức / thông báo
+# Bot hỗ trợ 4 kiểu quét:
+#   - wp_api : Web chạy WordPress (lấy thẳng JSON từ /wp-json/wp/v2/posts, rất nhanh & ổn định)
+#   - html   : Quét HTML bằng CSS selector
+#   - rss    : Đọc RSS / Atom feed
+#   - auto   : Tự động nhận diện (RSS -> WordPress API -> HTML) — tiện nhất khi thêm web mới!
+#
+# Lưu ý chống trùng:
+#   Các nguồn đặt phía trên có độ ưu tiên gắn nhãn cao hơn nếu cùng 1 bài xuất hiện ở nhiều mục.
+
+sources:
+  # ==========================================================
+  # 1. IIG VIỆT NAM (https://iigvietnam.com/vi)
+  # ==========================================================
+  - id: iig-thong-bao
+    name: "IIG Việt Nam - Quy định & Thông báo"
+    url: "https://iigvietnam.com/vi/tin-tuc/chuyen-muc/quy-dinh-va-thong-bao"
+    type: html
+    enabled: true
+    limit: 15
+    color: "#D97706"
+    item_selector: "article.cd-featured-slide, article.cd-card"
+    link_selector: "h2 a, h3 a, a.cd-card-link"
+    date_selector: "time"
+    summary_selector: "p.cd-featured-excerpt, p.cd-card-text"
+    content_selector: ".cd-detail"
+    include_patterns:
+      - "/vi/tin-tuc/"
+    exclude_patterns:
+      - "/chuyen-muc/"
+
+  - id: iig-tin-tuc
+    name: "IIG Việt Nam - Tin tức"
+    url: "https://iigvietnam.com/vi/tin-tuc"
+    type: html
+    enabled: true
+    limit: 15
+    color: "#2563EB"
+    item_selector: "article.cd-featured-slide, article.cd-card"
+    link_selector: "h2 a, h3 a, a.cd-card-link"
+    date_selector: "time"
+    summary_selector: "p.cd-featured-excerpt, p.cd-card-text"
+    content_selector: ".cd-detail"
+    include_patterns:
+      - "/vi/tin-tuc/"
+    exclude_patterns:
+      - "/chuyen-muc/"
+
+  # ==========================================================
+  # 2. HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG (https://ptit.edu.vn)
+  # ==========================================================
+  - id: ptit-thong-bao
+    name: "PTIT - Thông báo"
+    url: "https://ptit.edu.vn"
+    type: wp_api
+    enabled: true
+    limit: 15
+    color: "#DC2626"
+    content_selector: ".post-content"
+    # Các chuyên mục thông báo trên PTIT:
+    #   176: Thông báo | 172: Thông báo sinh viên | 239: Thông báo tốt nghiệp văn bằng
+    #   199: Thông báo học bổng | 344: Giáo vụ
+    categories: [176, 172, 239, 199, 344]
+
+  - id: ptit-tin-tuc
+    name: "PTIT - Tin tức"
+    url: "https://ptit.edu.vn"
+    type: wp_api
+    enabled: true
+    limit: 15
+    color: "#B91C1C"
+    content_selector: ".post-content"
+    # Không lọc categories => quét toàn bộ bài viết mới trên ptit.edu.vn
+    # (Bài nào đã nằm ở ptit-thong-bao sẽ tự động chống trùng, không gửi 2 lần)
+
+  # ==========================================================
+  # MẪU THÊM WEB MỚI SAU NÀY (bỏ dấu # để kích hoạt)
+  # ==========================================================
+  # - id: web-moi-auto
+  #   name: "Tên trang web mới"
+  #   url: "https://example.com/thong-bao"
+  #   type: auto          # Tự động tìm RSS, WordPress API hoặc thẻ bài viết HTML
+  #   enabled: true
+  #   limit: 15
+  #   # (Tuỳ chọn) Chỉ gửi email khi tiêu đề chứa ít nhất 1 từ khóa bên dưới:
+  #   # keywords: ["thông báo", "lịch thi", "tuyển sinh"]
+  #   # (Tuỳ chọn) Bỏ qua bài viết có tiêu đề chứa các từ khóa này:
+  #   # exclude_keywords: ["quảng cáo"]
