@@ -111,15 +111,25 @@ sources:
   # ==========================================================
   - id: soxaydung-hanoi-noxh-gt
     name: "Sở Xây dựng Hà Nội - NOXH & Giao thông"
-    url: "https://soxaydung.hanoi.gov.vn/"
-    type: html
+    # soxaydung.hanoi.gov.vn chặn IP nước ngoài (timeout trên GitHub Actions),
+    # nên dùng Google News RSS chính thức lọc trực tiếp site:soxaydung.hanoi.gov.vn
+    url: "https://news.google.com/rss/search?q=site:soxaydung.hanoi.gov.vn+when:30d&hl=vi&gl=VN&ceid=VN:vi"
+    type: rss
     enabled: true
-    limit: 15
+    limit: 30
     color: "#0F766E"
-    link_selector: "a[href$='.htm']"
-    include_patterns:
-      - "/phat-trien-nha-o/"
-      - "/quan-ly-giao-thong-van-tai/"
+    keywords:
+      - "nhà ở xã hội"
+      - "noxh"
+      - "giao thông"
+      - "vận tải"
+      - "giá bán"
+      - "tiếp nhận hồ sơ"
+      - "nhà ở sinh viên"
+    exclude_keywords:
+      - "tìm kiếm văn bản"
+      - "trang ttđt"
+      - "quản lý giao thông, vận tải -"
 
   - id: chinhphu-chinh-sach-moi
     name: "Báo Chính phủ - Chính sách mới"
